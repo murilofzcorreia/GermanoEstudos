@@ -86,14 +86,55 @@ Sempre que novas páginas, componentes ou conteúdos forem gerados para este pro
 
 ---
 
-## 📂 6. Fonte da Verdade & Conteúdo (Pasta `assets/`)
+## 📂 6. Fonte da Verdade, Gestão de Assets e Organização Automática de PDFs
 
-- **Prevenção de Alucinação:** Todas as informações, conceitos, resumos, simulados e flashcards devem ser extraídos **estritamente dos materiais e PDFs das aulas** disponibilizados na pasta `assets/`.
-- **Foco no que é Cobrado:** Não inventar nem adicionar temas supérfluos que não foram passados pelos professores da UNESP, garantindo que o tempo de estudo da Ana seja 100% focado no que cai nas avaliações.
-- **Fluxo de Trabalho:**
-  1. O usuário insere os PDFs das aulas na pasta `assets/`.
-  2. O Antigravity lê e analisa os documentos.
-  3. São criadas as subpáginas e os decks de estudo fielmente alinhados às aulas.
+A pasta `assets/` é o coração do projeto e a fonte primária de verdade de todos os resumos, páginas e flashcards.
+
+### 🛡️ Prevenção de Alucinação & Foco Curricular
+- Todas as informações conceituais, anatômicas e teóricas devem ser extraídas **estritamente dos materiais e PDFs das aulas** disponibilizados em `assets/`.
+- Não inventar ou adicionar temas divergentes que não foram passados pelos professores da UNESP (FCT), garantindo que o estudo da Ana seja 100% direcionado para o que é cobrado nas avaliações.
+
+---
+
+### 🗂️ Protocolo Obrigatório de Ingestão e Organização de PDFs
+Sempre que novos PDFs forem adicionados em `assets/` (na raiz ou em pastas soltas), o **Antigravity** deve seguir compulsoriamente os seguintes passos:
+
+1. **Reconhecimento Inteligente de Tópico e Conteúdo:**
+   - Inspecionar e ler o conteúdo do PDF (títulos, subtítulos, ementa e conceitos abordados).
+   - Identificar a **Disciplina Macro** (ex: `anatomia`, `fisiologia`, `biomecanica`, etc.).
+   - Identificar a **Subdisciplina / Eixo Temático** (ex: `neuroAnato`, `locomotor`, `cardiovascular`, etc.).
+   - Identificar o **Tema / Assunto Específico** da aula (ex: Encéfalo e Núcleos da Base, Medula Espinal, etc.).
+
+2. **Estrutura Hierárquica Padrão:**
+   - Todos os arquivos devem ser arquivados seguindo estritamente a estrutura:
+     ```
+     assets/<disciplina>/<subdisciplina>/<NOME_DO_ARQUIVO_PADRONIZADO>.pdf
+     ```
+   - Exemplo implementado: `assets/anatomia/neuroAnato/`
+
+3. **Criação Automática de Pastas e Subpastas:**
+   - **Se a pasta da disciplina não existir:** O Antigravity deve criá-la imediatamente.
+   - **Se a subpasta da subdisciplina (tema) não existir:** O Antigravity deve criá-la imediatamente dentro da disciplina correspondente, espelhando a organização adotada (ex: `anatomia/neuroAnato`).
+
+4. **Higienização e Padronização de Nomes:**
+   - Arquivos com nomes genéricos (ex: `Inserir um título (1).pdf`, `download.pdf`, `aula2.pdf`) devem ser renomeados para o nome real e descritivo do tema abordado (ex: `ENCÉFALO E NÚCLEOS DA BASE.pdf`).
+   - Remover espaços residuais antes da extensão e caracteres corrompidos.
+
+5. **Manutenção do Catálogo Vivo no `context.md`:**
+   - Sempre que novos arquivos forem inseridos ou movidos, a seção de inventário do `context.md` deve ser atualizada para refletir a árvore atualizada de materiais.
+
+---
+
+### 📚 Catálogo Ativo de Materiais e Disciplinas
+
+#### 🦴 Disciplina: Anatomia (`assets/anatomia/`)
+- **Subdisciplina:** Neuroanatomia (`assets/anatomia/neuroAnato/`)
+  1. `INTRODUÇÃO AO SNC.pdf`:
+     - *Tópicos:* Divisão anatômica (SNC vs SNP) e funcional (Somático vs Visceral - Simpático e Parassimpático); Tecido nervoso (Neurônios, Células da Glia: Astrócitos, Oligodendrócitos, Micróglia, Células Ependimárias, Células Satélites, Células de Schwann); Mielinização e Nódulos de Ranvier; Sinapses e tipos de neurônios.
+  2. `MEDULA ESPINAL E NERVOS ESPINAIS.pdf`:
+     - *Tópicos:* Localização, limites e intumescências (cervical e lombossacral), cone medular e cauda equina; Morfologia em H medular (colunas anterior, posterior e lateral); Substância cinzenta e branca (funículos e tratos ascendentes/descendentes); Envoltórios/Meninges e líquor; Segmentos medulares e raízes; Bainhas conjuntivas (Endoneuro, Perineuro, Epineuro); Plexos nervosos (Cervical, Braquial, Lombar e Sacral).
+  3. `ENCÉFALO E NÚCLEOS DA BASE.pdf` *(anteriormente Inserir um título (1).pdf)*:
+     - *Tópicos:* Divisão do encéfalo (Telencéfalo, Diencéfalo, Tronco Encefálico, Cerebelo); Sulcos e giros cerebrais; Lobos cerebrais (Frontal, Parietal, Temporal, Occipital, Ínsula) e áreas funcionais (Broca, Wernicke, córtex motor/somatossensorial); Meninges encefálicas, seios da dura-máter, foice do cérebro e tenda do cerebelo; Ventrículos encefálicos e circulação do líquor (LCR); Fibras de substância branca (Comissurais, Associação e Projeção); Núcleos da base (Caudado, Lentiforme: Putâmen e Globo Pálido); Diencéfalo (Tálamo, Hipotálamo, Epitálamo, Subtálamo); Tronco encefálico (Mesencéfalo, Ponte, Bulbo); Cerebelo (Lobos anterior, posterior e floculonodular); Sistema Límbico (Giro do cíngulo, Hipocampo, Amígdala, Fórnix).
 
 ---
 
