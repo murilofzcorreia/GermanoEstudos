@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#FBF8F5">
 <title>Neuroanatomia — Germano Estudos</title>
+<link rel="icon" type="image/png" href="public/logo-germano-estudos.png">
+<link rel="apple-touch-icon" href="public/logo-germano-estudos.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,10 +105,26 @@ code.path {
 
 .wordmark { display: flex; align-items: center; gap: 12px; }
 .wordmark-mark {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--rule-strong);
-  display: grid; place-items: center;
-  background: var(--surface);
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--rule-strong);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--surface); box-shadow: 0 2px 8px rgba(74, 31, 110, 0.12); flex-shrink: 0;
+}
+.wordmark-mark .logo-avatar {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block;
+}
+
+.deck-tag-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  padding: 5px 14px 5px 6px; border-radius: 999px;
+  font-size: 0.76rem; font-weight: 700; color: var(--plum);
+  margin-bottom: 14px; box-shadow: 0 2px 8px rgba(74, 31, 110, 0.08);
+}
+.deck-tag-logo {
+  width: 22px; height: 22px; border-radius: 50%;
+  object-fit: cover; object-position: center 20%;
+  border: 1px solid var(--rule); flex-shrink: 0;
 }
 .wordmark-text { display: flex; align-items: baseline; gap: 6px; line-height: 1; }
 .w-germano {
@@ -605,6 +623,8 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
   font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-soft);
   display: inline-flex; align-items: center; gap: 8px;
 }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-logo-thumb { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--rule-strong); object-fit: cover; object-position: center 20%; box-shadow: 0 2px 6px rgba(74, 31, 110, 0.1); flex-shrink: 0; }
 
 /* ==========================================================================
    RESPONSIVO
@@ -689,7 +709,7 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a href="index.html" class="wordmark" aria-label="Germano Estudos — início">
-      <span class="wordmark-mark"><svg width="20" height="20" style="color: var(--violet)"><use href="#i-lily"/></svg></span>
+      <span class="wordmark-mark"><img src="public/logo-germano-estudos.png" alt="Logo Germano Estudos" class="logo-avatar"></span>
       <span class="wordmark-text"><span class="w-germano">Germano</span><span class="w-estudos">estudos</span></span>
     </a>
     <a class="back-link" href="index.html">
@@ -712,6 +732,10 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
 
       <div class="hero-grid">
         <div>
+          <div class="deck-tag-pill">
+            <img src="public/logo-germano-estudos.png" alt="Logo" class="deck-tag-logo">
+            <span>Caderno da Ana • UNESP FCT</span>
+          </div>
           <h1>Neuro<em>anatomia</em></h1>
           <p class="hero-lede">
             Os conceitos das suas apostilas em cartões para virar, um resumo para
@@ -872,10 +896,13 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <span class="sig">
-      <svg width="14" height="14" style="color: var(--rose)"><use href="#i-heart"/></svg>
-      feito com carinho por Murilo Fuzi Correia
-    </span>
+    <div class="footer-brand">
+      <img src="public/logo-germano-estudos.png" alt="Logo" class="footer-logo-thumb">
+      <span class="sig">
+        <svg width="14" height="14" style="color: var(--rose)"><use href="#i-heart"/></svg>
+        feito com carinho por Murilo Fuzi Correia
+      </span>
+    </div>
     <span>Germano Estudos · Anatomia Humana · Neuroanatomia</span>
   </div>
 </footer>

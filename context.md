@@ -62,18 +62,32 @@ A estrutura do projeto segue uma hierarquia em 3 níveis:
 
 A estética é personalizada de acordo com os gostos da Ana, combinando delicadeza, romantismo e alta legibilidade para longas sessões de estudo.
 
-### 🎨 Paleta de Cores
-- **Roxo Principal:** `#6B46C1` / `#7E22CE` (títulos, botões principais e destaques fortes)
-- **Lilás / Lavanda:** `#A855F7` / `#C084FC` / `#D8B4FE` (cards, badges e bordas sutis)
-- **Fundo / Backgrounds:** `#FAF5FF` (lavanda claríssimo acolhedor) / `#F3E8FF` / `#FFFFFF` (branco puro para leitura limpa)
-- **Acentos Delicados (Rosa Suave / Floral):** `#F472B6` / `#FCE7F3` (detalhes, marcadores e corações)
-- **Texto & Legibilidade:** `#2E1065` (roxo ultraescuro para títulos) e `#374151` / `#4B5563` (cinza escuro suave para leitura de textos longos)
+### 🏷️ 4.1 Logo Oficial da Plataforma
+- **Arquivo Principal:** [`public/logo-germano-estudos.png`](file:///c:/Users/User/Desktop/AnaEstudos/public/logo-germano-estudos.png) (1254 × 1254 px, alta resolução)
+- **Composição da Marca:**
+  - Ilustração artística personalizada da estudante Ana (óculos pretos, cabelos escuros, blusa preta sem mangas, apoiando o queixo em atitude de foco e estudo).
+  - Mesa de estudos com livro aberto de folhas brancas com marcador rosa, pilha de cadernos roxos/rosas, porta-canetas com canetas lilás e rosa e detalhe de coração, e notebook lavanda com coração no verso.
+  - Halo/aura circular lavanda com pequenos corações rosa e estrelas de brilho roxas.
+  - Tipografia editorial *"Germano"* em fonte serifada encorpada em roxo ameixa escuro, capelo de formatura acadêmico na letra *G*, sublinhado curvado em magenta/fúcsia, e subtítulo *"— Estudos — CADERNO DA ANA —"* com corações delimitadores.
+- **Aplicações Obrigatórias nas Páginas:**
+  1. **Favicon do Navegador:** `<link rel="icon" type="image/png" href="public/logo-germano-estudos.png">` em todas as páginas HTML.
+  2. **Topbar / Navbar:** Emblema em `.wordmark-mark` com avatar circular (`object-position: center 20%`), borda suave e sombra sutil.
+  3. **Hero Principal (`index.html`):** Moldura artística editorial (`.arch`) destacando a arte da logo oficial em tamanho grande, com tag personalizada de aluna da UNESP.
+  4. **Pílulas de Disciplinas e Subpáginas:** Mini badge ou tag pill (`.deck-tag-pill`) acompanhado do avatar do logo para reforçar o pertencimento ao caderno.
+  5. **Rodapé (Footer):** Mini avatar com assinatura de carinho em todas as telas da plataforma.
 
-### 🌿 Elementos Gráficos & Estilo
+### 🎨 4.2 Paleta de Cores Oficial
+- **Roxo Ameixa / Principal:** `#4A1F6E` / `#3B0764` / `#581C87` (títulos, botões principais e lettering da marca)
+- **Lilás / Lavanda:** `#A855F7` / `#C9B1E4` / `#E6D9F2` (cards, badges, auras e superfícies)
+- **Fundo / Papel Acolhedor:** `#FBF8F5` (papel quente) / `#FAF5FF` (lavanda suave) / `#FFFFFF` (branco puro)
+- **Magenta / Rosa Intenso / Blush:** `#C95683` / `#DB2777` / `#F2C4D4` / `#F7E3EB` (corações, linhas de destaque e tags)
+- **Texto & Legibilidade:** `#24132F` (tinta escura para leitura) e `#4E3D5C` / `#8A7B96` (suave para apoios e legendas)
+
+### 🌿 4.3 Elementos Gráficos & Estilo
 - **Flores & Lírios:** Ícones, ilustrações sutis e divisores temáticos inspirados em lírios e flores delicadas.
-- **Corações sutis:** Detalhes carinhosos em cabeçalhos, rodapés e mensagens motivacionais.
-- **Formas & Sombras:** Cantos arredondados suaves (`rounded-2xl`, `rounded-3xl`), sombras leves e difusas (`shadow-sm`, `shadow-md`), sem cantos duros.
-- **Atmosfera Geral:** Delicada, feminina, serena, encorajadora e focada na produtividade acadêmica.
+- **Corações Sutis:** Detalhes carinhosos em cabeçalhos, rodapés, tags de páginas e mensagens motivacionais.
+- **Formas & Sombras:** Cantos arredondados suaves (`rounded-2xl`, `rounded-3xl` / 28–36px), sombras leves e difusas (`shadow-sm`, `shadow-md`), sem cantos duros.
+- **Atmosfera Geral:** Delicada, feminina, serena, encorajadora, personalizada para a Ana e focada na excelência acadêmica.
 
 ---
 

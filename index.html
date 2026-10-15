@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FBF8F5">
 <title>Germano Estudos — Caderno da Ana</title>
+<link rel="icon" type="image/png" href="public/logo-germano-estudos.png">
+<link rel="apple-touch-icon" href="public/logo-germano-estudos.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -132,13 +134,25 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 
 .wordmark-mark {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--rule-strong);
-  display: grid;
-  place-items: center;
+  border: 1.5px solid var(--rule-strong);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--surface);
+  box-shadow: 0 2px 8px rgba(74, 31, 110, 0.12);
+  flex-shrink: 0;
+}
+
+.wordmark-mark .logo-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
 }
 
 .wordmark-text {
@@ -306,40 +320,77 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   color: var(--ink-muted);
 }
 
-/* Moldura em arco com o lírio */
+/* Moldura editorial com a Logo Oficial da Plataforma */
 .hero-art {
   position: relative;
   justify-self: end;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .arch {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  aspect-ratio: 1 / 1;
+  border-radius: 36px;
   background:
-    radial-gradient(120% 80% at 50% 0%, #FFFFFF 0%, transparent 60%),
+    radial-gradient(120% 90% at 50% 10%, #FFFFFF 0%, rgba(255,255,255,0.8) 60%, transparent 100%),
     var(--lilac-wash);
   border: 1px solid var(--rule-strong);
+  box-shadow:
+    0 24px 52px -16px rgba(74, 31, 110, 0.22),
+    0 4px 16px rgba(74, 31, 110, 0.06);
   overflow: hidden;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arch::after {
-  /* filete interno, como passe-partout */
   content: "";
   position: absolute;
-  inset: 12px;
-  border-radius: 999px 999px 16px 16px;
-  border: 1px solid rgba(107, 53, 160, 0.18);
+  inset: 10px;
+  border-radius: 28px;
+  border: 1px solid rgba(107, 53, 160, 0.16);
   pointer-events: none;
 }
 
-.arch svg.lily-art {
-  position: absolute;
-  inset: 0;
+.hero-logo-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  border-radius: 26px;
+  display: block;
+  transition: transform 0.45s var(--ease);
+}
+
+.hero-art:hover .hero-logo-img {
+  transform: scale(1.025);
+}
+
+.arch-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--rule-strong);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--plum);
+  box-shadow: 0 4px 14px rgba(74, 31, 110, 0.1);
+}
+
+.arch-tag .tag-heart {
+  color: var(--rose);
+  font-size: 0.85rem;
 }
 
 .arch-caption {
@@ -347,14 +398,15 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--ink-muted);
 }
 
 .arch-caption em {
   font-family: var(--serif);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--ink-soft);
+  font-style: italic;
 }
 
 .quote-card {
@@ -1064,6 +1116,23 @@ code.path {
   gap: 8px;
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rule-strong);
+  object-fit: cover;
+  object-position: center 20%;
+  box-shadow: 0 2px 6px rgba(74, 31, 110, 0.1);
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    ENTRADA SUAVE
    ========================================================================== */
@@ -1173,7 +1242,7 @@ code.path {
   <div class="wrap topbar-inner">
     <a href="index.html" class="wordmark" aria-label="Germano Estudos — início">
       <span class="wordmark-mark">
-        <svg width="20" height="20" style="color: var(--violet)"><use href="#i-lily"/></svg>
+        <img src="public/logo-germano-estudos.png" alt="Logo Germano Estudos" class="logo-avatar">
       </span>
       <span class="wordmark-text">
         <span class="w-germano">Germano</span>
@@ -1243,70 +1312,14 @@ code.path {
         </div>
       </div>
 
-      <!-- Ilustração: lírio em moldura de arco -->
+      <!-- Logo Oficial e Ilustração: Caderno da Ana em moldura artística -->
       <div class="hero-art reveal d2">
         <div class="arch">
-          <svg class="lily-art" viewBox="0 0 420 525" fill="none" aria-hidden="true">
-            <g class="sway">
-              <!-- caule -->
-              <path d="M214 525 C210 450 204 380 212 300 C216 262 222 236 226 214" stroke="#5E7F6B" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M210 410 C190 396 178 380 172 360" stroke="#5E7F6B" stroke-width="1.6" stroke-linecap="round"/>
-              <!-- folhas -->
-              <path d="M211 440 C170 420 136 380 128 330 C160 352 194 392 211 440 Z" fill="#E4EDE6" stroke="#5E7F6B" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M211 440 C172 412 150 382 132 336" stroke="#5E7F6B" stroke-width="0.9" opacity="0.6"/>
-              <path d="M209 360 C250 344 286 306 296 258 C262 280 226 318 209 360 Z" fill="#E4EDE6" stroke="#5E7F6B" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M209 360 C246 334 272 300 292 264" stroke="#5E7F6B" stroke-width="0.9" opacity="0.6"/>
-
-              <!-- botão fechado -->
-              <g transform="translate(172 360) rotate(-28)">
-                <path d="M0 0 C-12 -18 -12 -52 0 -78 C12 -52 12 -18 0 0 Z" fill="#F1E9F7" stroke="#6B35A0" stroke-width="1.4"/>
-                <path d="M0 -6 C-4 -26 -4 -50 0 -72" stroke="#6B35A0" stroke-width="0.9" opacity="0.5"/>
-              </g>
-
-              <!-- flor aberta -->
-              <g transform="translate(226 214) scale(1.28)">
-                <g fill="#FFFFFF" stroke="#6B35A0" stroke-width="1.5" stroke-linejoin="round">
-                  <use href="#petal" transform="rotate(-150)" fill="#F1E9F7"/>
-                  <use href="#petal" transform="rotate(150)"  fill="#F1E9F7"/>
-                  <use href="#petal" transform="rotate(-90)"/>
-                  <use href="#petal" transform="rotate(90) scale(-1 1)"/>
-                  <use href="#petal" transform="rotate(-25)"/>
-                  <use href="#petal" transform="rotate(25) scale(-1 1)"/>
-                </g>
-                <!-- nervuras + pintinhas rosadas (lírio stargazer) -->
-                <g stroke="#C95683" stroke-width="1" opacity="0.55" stroke-linecap="round">
-                  <path d="M0 -8 L-8 -62" transform="rotate(-25)"/>
-                  <path d="M0 -8 L8 -62"  transform="rotate(25)"/>
-                  <path d="M0 -8 L-8 -62" transform="rotate(-90)"/>
-                  <path d="M0 -8 L8 -62"  transform="rotate(90)"/>
-                </g>
-                <g fill="#C95683">
-                  <circle cx="-16" cy="-34" r="1.8"/><circle cx="-10" cy="-46" r="1.4"/><circle cx="-22" cy="-48" r="1.2"/>
-                  <circle cx="18" cy="-32" r="1.8"/><circle cx="12" cy="-45" r="1.4"/><circle cx="24" cy="-46" r="1.2"/>
-                  <circle cx="-34" cy="-6" r="1.6"/><circle cx="-46" cy="-12" r="1.3"/>
-                  <circle cx="34" cy="-4" r="1.6"/><circle cx="46" cy="-10" r="1.3"/>
-                </g>
-                <!-- estames -->
-                <g stroke="#4A1F6E" stroke-width="1.1" stroke-linecap="round">
-                  <path d="M0 0 C-6 -20 -14 -36 -22 -52"/>
-                  <path d="M0 0 C-2 -22 -4 -40 -6 -60"/>
-                  <path d="M0 0 C3 -22 6 -40 9 -58"/>
-                  <path d="M0 0 C8 -20 16 -34 24 -48"/>
-                  <path d="M0 0 C0 -24 1 -46 1 -66" stroke="#6B35A0"/>
-                </g>
-                <g fill="#B24A66">
-                  <ellipse cx="-22" cy="-55" rx="2.6" ry="5" transform="rotate(-30 -22 -55)"/>
-                  <ellipse cx="-6" cy="-63" rx="2.6" ry="5" transform="rotate(-8 -6 -63)"/>
-                  <ellipse cx="9" cy="-61" rx="2.6" ry="5" transform="rotate(12 9 -61)"/>
-                  <ellipse cx="24" cy="-51" rx="2.6" ry="5" transform="rotate(32 24 -51)"/>
-                </g>
-                <circle cx="1" cy="-68" r="3.4" fill="#6B35A0"/>
-              </g>
-            </g>
-            <!-- pequenas pétalas caídas -->
-            <path d="M92 470 c6 -10 18 -12 22 -4 c-6 8 -16 10 -22 4 Z" fill="#F2C4D4" opacity="0.8"/>
-            <path d="M318 488 c4 -8 14 -9 17 -3 c-5 6 -12 7 -17 3 Z" fill="#E6D9F2"/>
-          </svg>
+          <img src="public/logo-germano-estudos.png" alt="Germano Estudos — Caderno da Ana" class="hero-logo-img">
+          <div class="arch-tag">
+            <span class="tag-heart">♥</span>
+            <span>Caderno da Ana</span>
+          </div>
         </div>
 
         <div class="quote-card" id="quote-card">
@@ -1318,8 +1331,8 @@ code.path {
         </div>
 
         <div class="arch-caption">
-          <em>Lilium, para a Ana</em>
-          <span>fig. 01</span>
+          <em>Germano Estudos</em>
+          <span>Educação Física · UNESP</span>
         </div>
       </div>
     </div>
@@ -1571,10 +1584,13 @@ code.path {
 
 <footer class="footer">
   <div class="wrap footer-inner">
-    <span class="sig">
-      <svg width="14" height="14" style="color: var(--rose)"><use href="#i-heart"/></svg>
-      feito com carinho para a Ana Paula Germano de Oliveira
-    </span>
+    <div class="footer-brand">
+      <img src="public/logo-germano-estudos.png" alt="Logo" class="footer-logo-thumb">
+      <span class="sig">
+        <svg width="14" height="14" style="color: var(--rose)"><use href="#i-heart"/></svg>
+        feito com carinho para a Ana Paula Germano de Oliveira
+      </span>
+    </div>
     <span>Germano Estudos · Educação Física · UNESP FCT</span>
   </div>
 </footer>
