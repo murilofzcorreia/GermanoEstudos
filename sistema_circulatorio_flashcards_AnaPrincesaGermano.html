@@ -737,8 +737,8 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
           </div>
           <h1>Sistema <em>Circulatório</em></h1>
           <p class="hero-lede">
-            Sangue, linfa e coração da sua apostila em cartões para virar, um resumo
-            para consulta rápida e um simulado para ver o que já ficou.
+            Sangue, coração, condução e vasos das suas apostilas em cartões para virar,
+            um resumo para consulta rápida e um simulado para ver o que já ficou.
           </p>
           <div class="credit">
             <svg width="12" height="12" style="color: var(--rose)"><use href="#i-heart"/></svg>
@@ -751,7 +751,7 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
           <span class="eyebrow">Seu progresso</span>
           <div class="figures">
             <div>
-              <div class="figure-num" id="fig-mastered">0<small>/41</small></div>
+              <div class="figure-num" id="fig-mastered">0<small>/68</small></div>
               <div class="figure-label">já sei</div>
             </div>
             <div>
@@ -772,9 +772,9 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
       </div>
 
       <div class="tabs" role="tablist" aria-label="Modos de estudo">
-        <button class="tab" role="tab" id="tab-cards"  aria-controls="view-cards"  aria-selected="true">Flashcards <span class="count">41</span></button>
-        <button class="tab" role="tab" id="tab-notes"  aria-controls="view-notes"  aria-selected="false">Resumo <span class="count">41</span></button>
-        <button class="tab" role="tab" id="tab-exam"   aria-controls="view-exam"   aria-selected="false">Simulado <span class="count">20</span></button>
+        <button class="tab" role="tab" id="tab-cards"  aria-controls="view-cards"  aria-selected="true">Flashcards <span class="count">68</span></button>
+        <button class="tab" role="tab" id="tab-notes"  aria-controls="view-notes"  aria-selected="false">Resumo <span class="count">68</span></button>
+        <button class="tab" role="tab" id="tab-exam"   aria-controls="view-exam"   aria-selected="false">Simulado <span class="count">30</span></button>
       </div>
     </div>
   </section>
@@ -851,7 +851,7 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
         <div class="filters" id="note-filters" role="group" aria-label="Filtrar resumo por bloco"></div>
         <label class="search">
           <svg width="16" height="16"><use href="#i-search"/></svg>
-          <input type="search" id="search" placeholder="Buscar: pericárdio, mitral, linfa…" aria-label="Buscar no resumo">
+          <input type="search" id="search" placeholder="Buscar: pericárdio, Purkinje, capilares…" aria-label="Buscar no resumo">
         </label>
       </div>
       <div class="notes" id="notes"></div>
@@ -861,8 +861,8 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
     <section class="view" id="view-exam" role="tabpanel" aria-labelledby="tab-exam">
       <div class="exam-intro">
         <div>
-          <p>20 questões feitas a partir da apostila. A resposta aparece assim que você escolhe uma alternativa. No fim, veja sua nota de 0 a 10.</p>
-          <div class="answered" id="answered">0 de 20 respondidas</div>
+          <p>30 questões feitas a partir das apostilas. A resposta aparece assim que você escolhe uma alternativa. No fim, veja sua nota de 0 a 10.</p>
+          <div class="answered" id="answered">0 de 30 respondidas</div>
         </div>
         <div class="exam-actions">
           <button class="btn-ghost" id="btn-reset">Recomeçar</button>
@@ -908,7 +908,7 @@ mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 
 
 <script>
 /* ==========================================================================
-   DADOS: 41 FLASHCARDS + 20 QUESTÕES (extraídos da apostila)
+   DADOS: 68 FLASHCARDS + 30 QUESTÕES (extraídos das apostilas)
    ========================================================================== */
 
 const FLASHCARDS = [
@@ -1164,11 +1164,177 @@ const FLASHCARDS = [
     q: 'O que acontece na diástole ventricular e quando as valvas atrioventriculares se abrem?',
     a: 'Os <strong>ventrículos relaxam</strong> e a <strong>pressão diminui</strong>; as <strong>valvas semilunares se fecham</strong>, produzindo o som <strong>"tá"</strong>. Quando a <strong>pressão ventricular fica menor que a atrial</strong>, as <strong>valvas atrioventriculares se abrem</strong>, permitindo a entrada de sangue nos ventrículos.',
     tip: '💡 Na diástole: semilunares fechadas 🔒 + AV abertas 🔓 → os ventrículos enchem. É o espelho da sístole!'
+  },
+
+  // --- BLOCO 5 (APOSTILA 2): SÍSTOLE ATRIAL, ESQUELETO FIBROSO E SISTEMA DE CONDUÇÃO (10 CARTÕES) ---
+  {
+    id: 42, cat: 'conducao', topic: 'Sístole Atrial',
+    q: 'O que acontece na sístole atrial e como ficam as valvas nesse momento?',
+    a: 'Os <strong>átrios se contraem</strong>, enviando sangue para os <strong>ventrículos</strong>, que estão em <strong>diástole</strong>.<br>• <strong>Valvas atrioventriculares</strong> (tricúspide e mitral): <strong>abertas</strong>.<br>• <strong>Valvas da aorta e do tronco pulmonar</strong>: <strong>fechadas</strong>.',
+    tip: '💡 Sístole atrial = átrios empurram o sangue para baixo: AV abertas 🔓, semilunares fechadas 🔒.'
+  },
+  {
+    id: 43, cat: 'conducao', topic: 'Sístole Ventricular e Diástole Atrial',
+    q: 'Na sístole ventricular, o que fazem os átrios e o que acontece com as valvas?',
+    a: 'Os <strong>ventrículos se contraem</strong> enquanto os <strong>átrios estão em diástole</strong>. As <strong>valvas atrioventriculares se fecham</strong> e as <strong>valvas da aorta e do tronco pulmonar se abrem</strong>, permitindo que o sangue seja bombeado <strong>para o corpo pela aorta</strong> e <strong>para os pulmões pelo tronco pulmonar</strong>.',
+    tip: '💡 Átrios e ventrículos se alternam: quando um contrai (sístole), o outro relaxa (diástole).'
+  },
+  {
+    id: 44, cat: 'conducao', topic: 'Esqueleto Fibroso do Coração',
+    q: 'Do que é formado o esqueleto fibroso do coração e quais são suas funções?',
+    a: 'É formado por <strong>tecido conjuntivo denso</strong> e:<br>• <strong>sustenta e fixa as valvas cardíacas</strong>;<br>• promove o <strong>isolamento elétrico entre átrios e ventrículos</strong>.<br>Nele, as <strong>valvas da aorta e do tronco pulmonar</strong> ficam mais <em>anteriormente</em>, e as <strong>atrioventriculares</strong> (tricúspide e mitral) mais <em>posteriormente</em>.',
+    tip: '💡 Por causa desse isolamento elétrico, o impulso chega aos ventrículos pelo feixe de His, que atravessa o esqueleto fibroso.'
+  },
+  {
+    id: 45, cat: 'conducao', topic: 'Automaticidade do Coração',
+    q: 'O que é a automaticidade do coração e como ela difere do músculo esquelético?',
+    a: 'O <strong>músculo esquelético</strong> depende de <strong>estímulos nervosos</strong> para se contrair. Já o coração possui <strong>automaticidade</strong>: <strong>gera seus próprios impulsos elétricos</strong>, normalmente no <strong>nó sinoatrial</strong>. Esses impulsos se propagam pelo <strong>sistema de condução cardíaco</strong>, coordenando as contrações. O sistema nervoso apenas <strong>regula a frequência e a força</strong> dos batimentos.',
+    tip: '💡 O sistema nervoso não "liga" o coração: ele só acelera, desacelera ou muda a força.'
+  },
+  {
+    id: 46, cat: 'conducao', topic: 'Complexo Estimulante do Coração',
+    q: 'O que é o complexo estimulante do coração e quais são suas estruturas, em ordem?',
+    a: 'É formado por <strong>células musculares cardíacas modificadas</strong>, especializadas em <strong>gerar e conduzir impulsos elétricos</strong> que coordenam os batimentos. Ordem:<br><strong>Nó sinoatrial → Feixes internodais → Nó atrioventricular → Feixe atrioventricular (de His) → Ramos direito e esquerdo → Fibras de Purkinje</strong>.',
+    tip: '💡 Sequência para decorar: SA → internodais → AV → His → ramos → Purkinje.'
+  },
+  {
+    id: 47, cat: 'conducao', topic: 'Nó Sinoatrial: o Marcapasso',
+    q: 'Onde fica o nó sinoatrial, por que ele é o marcapasso natural e o que significa o coração ser autorrítmico?',
+    a: '• <strong>Localização:</strong> no <strong>átrio direito</strong>, próximo à desembocadura da <strong>veia cava superior</strong>.<br>• É o <strong>marcapasso natural</strong>: suas células <strong>geram espontaneamente potenciais de ação</strong>.<br>• Isso torna o coração <strong>autorrítmico</strong>: capaz de produzir seus próprios estímulos elétricos, <em>desde que receba oxigênio e nutrientes</em>. Por isso o coração pode <strong>continuar batendo por um período mesmo fora do corpo</strong>.',
+    tip: '💡 Nó SA = marcapasso = átrio direito, perto da veia cava superior.'
+  },
+  {
+    id: 48, cat: 'conducao', topic: 'Regulação Autonômica do Ritmo',
+    q: 'Como o sistema nervoso autônomo regula o ritmo cardíaco?',
+    a: 'O <strong>sistema nervoso autônomo regula o ritmo cardíaco</strong>:<br>• <strong>Simpático:</strong> <strong>aumenta</strong> a frequência.<br>• <strong>Parassimpático:</strong> <strong>diminui</strong> a frequência.',
+    tip: '💡 Conecta com a Neuro: Simpático = luta ou fuga (acelera); Parassimpático = repouso e digestão (desacelera).'
+  },
+  {
+    id: 49, cat: 'conducao', topic: 'Feixes Internodais e Nó Atrioventricular',
+    q: 'Qual o papel dos feixes internodais e onde fica e o que faz o nó atrioventricular?',
+    a: '• <strong>Feixes internodais:</strong> conduzem o impulso pelo <strong>átrio direito até o nó atrioventricular</strong>; ao mesmo tempo, a ativação se propaga pelo miocárdio atrial, provocando a <strong>sístole atrial</strong>.<br>• <strong>Nó atrioventricular (AV):</strong> na <strong>parte inferior do átrio direito</strong>, próximo à <strong>valva tricúspide</strong> e ao <strong>septo interatrial</strong>. Recebe o impulso e provoca um <strong>pequeno atraso</strong> na condução, permitindo que os <strong>átrios terminem de enviar o sangue aos ventrículos</strong> antes da contração ventricular.',
+    tip: '💡 O atraso do nó AV é proposital: primeiro os átrios esvaziam, depois os ventrículos contraem.'
+  },
+  {
+    id: 50, cat: 'conducao', topic: 'Feixe de His e Fibras de Purkinje',
+    q: 'Qual o trajeto do feixe atrioventricular (de His) e o que fazem as fibras de Purkinje?',
+    a: '• <strong>Feixe atrioventricular (feixe de His):</strong> conduz o impulso do <strong>nó AV pelo esqueleto fibroso até o septo interventricular</strong>, onde se divide em <strong>ramo direito e ramo esquerdo</strong>.<br>• <strong>Fibras de Purkinje:</strong> distribuem <strong>rapidamente</strong> o impulso pelo <strong>miocárdio ventricular</strong>, coordenando a <strong>sístole ventricular</strong>, que ocorre de maneira geral <strong>do ápice em direção à base</strong>, impulsionando o sangue para o tronco pulmonar e a aorta.',
+    tip: '💡 Contração do ápice para a base = como espremer um tubo de pasta de baixo para cima, empurrando o sangue para as saídas (aorta e tronco pulmonar), que ficam na base.'
+  },
+  {
+    id: 51, cat: 'conducao', topic: 'Condução × Ciclo Cardíaco',
+    q: 'Relacione cada etapa do sistema de condução com a fase do ciclo cardíaco que ela provoca.',
+    a: '1. <strong>Nó SA</strong> gera o impulso (marcapasso).<br>2. <strong>Feixes internodais</strong> + miocárdio atrial → <strong>sístole atrial</strong>.<br>3. <strong>Nó AV</strong> → <strong>atraso</strong> para os átrios terminarem de encher os ventrículos.<br>4. <strong>Feixe de His → ramos → Purkinje</strong> → <strong>sístole ventricular</strong> (do ápice para a base).',
+    tip: '💡 Primeiro contraem os átrios, depois os ventrículos, graças ao atraso no nó AV.'
+  },
+
+  // --- BLOCO 6 (APOSTILA 2): VASOS SANGUÍNEOS, RETORNO VENOSO E CIRCULAÇÕES (17 CARTÕES) ---
+  {
+    id: 52, cat: 'vasos', topic: 'Trajeto do Sangue nos Vasos',
+    q: 'Qual o trajeto completo do sangue pelos vasos, saindo do coração e voltando a ele?',
+    a: '<strong>Coração → artérias → arteríolas → capilares → vênulas → veias → coração</strong>.<br>• <strong>Artérias:</strong> levam o sangue <em>para fora</em> do coração.<br>• <strong>Veias:</strong> conduzem o sangue <em>de volta</em> ao coração.<br>• <strong>Capilares:</strong> vasos <strong>microscópicos</strong> onde ocorrem as trocas de gases, nutrientes, água e outras substâncias com os tecidos.',
+    tip: '💡 Os vasos "-olas" e "-ulas" são os pequenos: arteríOLAs (antes dos capilares) e vênULAs (depois deles).'
+  },
+  {
+    id: 53, cat: 'vasos', topic: 'Capilares: Estrutura',
+    q: 'Qual o diâmetro dos capilares e como é sua parede?',
+    a: 'Os capilares têm aproximadamente <strong>5 a 10 micrômetros de diâmetro</strong> e <strong>paredes muito finas</strong>, formadas por <strong>uma única camada de células endoteliais</strong>. Essas características <strong>facilitam as trocas</strong> de substâncias entre o sangue e os tecidos.',
+    tip: '💡 Parede fina = troca fácil. O capilar é só endotélio!'
+  },
+  {
+    id: 54, cat: 'vasos', topic: 'Tipos de Capilares',
+    q: 'Quais são os três tipos de capilares, como se diferenciam e onde são encontrados?',
+    a: '• <strong>Contínuos:</strong> endotélio contínuo, com espaços muito pequenos; passagem <strong>seletiva</strong> de água e pequenas moléculas. Ex.: <strong>músculos</strong> e <strong>sistema nervoso central</strong>.<br>• <strong>Fenestrados:</strong> pequenos <strong>poros (fenestras)</strong>; maior passagem de água e solutos. Ex.: <strong>rins, intestino e glândulas endócrinas</strong>.<br>• <strong>Sinusoides:</strong> aberturas e espaços <strong>maiores</strong>; passam moléculas grandes e até <strong>células</strong>. Ex.: <strong>fígado, medula óssea e baço</strong>.',
+    tip: '💡 Do mais fechado ao mais aberto: Contínuo → Fenestrado → Sinusoide. Sinusoide = fígado, medula óssea e baço (por onde passam células!).'
+  },
+  {
+    id: 55, cat: 'vasos', topic: 'Arteríolas',
+    q: 'O que são as arteríolas e como elas regulam o fluxo sanguíneo?',
+    a: 'São <strong>pequenas ramificações das artérias</strong> que conduzem o sangue <strong>até os capilares</strong>. Suas paredes têm <strong>músculo liso</strong>, que controla o diâmetro do vaso por <strong>vasoconstrição</strong> e <strong>vasodilatação</strong>, regulando o fluxo sanguíneo para os tecidos.',
+    tip: '💡 Arteríolas = "torneiras" do fluxo: fecham (vasoconstrição) ou abrem (vasodilatação).'
+  },
+  {
+    id: 56, cat: 'vasos', topic: 'Vênulas',
+    q: 'O que são as vênulas e como sua parede se compara à das arteríolas?',
+    a: 'As vênulas <strong>recebem o sangue dos capilares</strong> e se unem progressivamente, formando <strong>veias de pequeno, médio e grande calibre</strong>, que levam o sangue de volta ao coração. Suas paredes são <strong>mais finas</strong> e têm <strong>menos músculo liso</strong> que as das arteríolas.',
+    tip: '💡 Vênulas = afluentes que se juntam para formar os rios (veias).'
+  },
+  {
+    id: 57, cat: 'vasos', topic: 'Veias e Retorno Venoso',
+    q: 'Como são as paredes das veias e por que o retorno venoso depende de mecanismos auxiliares?',
+    a: 'As veias têm paredes <strong>mais finas, menos musculares e menos elásticas</strong> que as artérias e, geralmente, um <strong>diâmetro interno maior</strong>. Como o sangue circula nelas sob <strong>baixa pressão</strong>, o retorno ao coração depende de <strong>mecanismos auxiliares</strong>: a <strong>bomba muscular</strong> (com as válvulas venosas) e a <strong>bomba respiratória</strong>.',
+    tip: '💡 Baixa pressão nas veias → precisa de "ajudantes" para o sangue subir até o coração.'
+  },
+  {
+    id: 58, cat: 'vasos', topic: 'Bomba Muscular e Válvulas Venosas',
+    q: 'Como funciona a bomba muscular e qual o papel das válvulas venosas?',
+    a: 'Durante a <strong>caminhada</strong> e outros movimentos, a <strong>contração dos músculos esqueléticos comprime as veias</strong> e impulsiona o sangue em direção ao coração. As <strong>válvulas venosas impedem o refluxo</strong>, garantindo que o sangue siga na direção correta.',
+    tip: '💡 Para a Educação Física: movimentar as pernas ajuda o sangue a voltar ao coração. A panturrilha funciona como uma bomba!'
+  },
+  {
+    id: 59, cat: 'vasos', topic: 'Bomba Respiratória',
+    q: 'O que é a bomba respiratória?',
+    a: 'Durante a <strong>inspiração</strong>, as <strong>mudanças de pressão no tórax e no abdome</strong> favorecem o deslocamento do <strong>sangue venoso em direção ao coração</strong>.',
+    tip: '💡 Cada inspiração também ajuda o retorno venoso.'
+  },
+  {
+    id: 60, cat: 'vasos', topic: 'Veias Superficiais e Profundas',
+    q: 'Como as veias podem ser classificadas quanto à localização?',
+    a: 'As veias são <strong>mais numerosas que as artérias</strong> e podem ser:<br>• <strong>Superficiais:</strong> próximas à superfície do corpo.<br>• <strong>Profundas:</strong> entre os músculos ou junto a outras estruturas. <strong>Muitas veias profundas acompanham as artérias</strong>.',
+    tip: '💡 Veia profunda costuma andar "de mãos dadas" com uma artéria.'
+  },
+  {
+    id: 61, cat: 'vasos', topic: 'Túnicas dos Vasos Sanguíneos',
+    q: 'Quais são as três túnicas da parede das artérias e das veias, de dentro para fora?',
+    a: '1. <strong>Túnica íntima:</strong> a mais <em>interna</em>, revestida pelo <strong>endotélio</strong>, em contato direto com o sangue.<br>2. <strong>Túnica média:</strong> <em>intermediária</em>, principalmente <strong>músculo liso e fibras elásticas</strong>; <strong>regula o diâmetro</strong> do vaso e é geralmente <strong>mais espessa nas artérias</strong>.<br>3. <strong>Túnica adventícia:</strong> a mais <em>externa</em>, de <strong>tecido conjuntivo</strong>; protege, sustenta e fixa o vaso. Nos vasos maiores, pode conter <strong>pequenos vasos que nutrem a parede vascular</strong>.',
+    tip: '💡 De dentro para fora: Íntima (endotélio) → Média (músculo) → Adventícia (conjuntivo). Mesma lógica do endocárdio → miocárdio → epicárdio!'
+  },
+  {
+    id: 62, cat: 'vasos', topic: 'Características das Artérias',
+    q: 'Quais são as principais características das artérias?',
+    a: 'Conduzem o sangue <strong>para fora do coração</strong>, têm paredes <strong>mais espessas, musculares e elásticas</strong>, suportam <strong>pressões mais elevadas</strong> e apresentam <strong>pulso arterial</strong>. Geralmente ficam em <strong>planos mais profundos</strong> (com exceções) e normalmente <strong>não possuem válvulas</strong> ao longo do trajeto.',
+    tip: '💡 Artéria = pressão alta + pulso + parede grossa + sem válvulas.'
+  },
+  {
+    id: 63, cat: 'vasos', topic: 'Características das Veias',
+    q: 'Quais são as principais características das veias?',
+    a: 'Conduzem o sangue <strong>de volta ao coração</strong>, têm paredes <strong>mais finas e menos elásticas</strong>, <strong>lúmen geralmente maior</strong> e transportam sangue sob <strong>baixa pressão</strong>. <strong>Podem colabar</strong> quando comprimidas, <strong>muitas têm válvulas</strong> que impedem o refluxo e podem ser <strong>superficiais ou profundas</strong>.',
+    tip: '💡 Veia = pressão baixa + parede fina + lúmen largo + válvulas + colaba.'
+  },
+  {
+    id: 64, cat: 'vasos', topic: 'Circulação Pulmonar (Pequena Circulação)',
+    q: 'Qual o trajeto da circulação pulmonar, do início ao fim?',
+    a: 'Começa na <strong>sístole ventricular</strong>: o <strong>ventrículo direito</strong> se contrai → sangue passa pela <strong>valva do tronco pulmonar</strong> → <strong>tronco pulmonar</strong> → <strong>artérias pulmonares direita e esquerda</strong> → <strong>pulmões</strong> (rede de capilares ao redor dos <strong>alvéolos</strong>) → <strong>veias pulmonares</strong> → <strong>átrio esquerdo</strong>, onde ela termina.',
+    tip: '💡 Pequena circulação: começa no Ventrículo Direito e termina no Átrio Esquerdo. Atenção: as artérias pulmonares levam sangue POBRE em O₂, e as veias pulmonares trazem sangue RICO em O₂!'
+  },
+  {
+    id: 65, cat: 'vasos', topic: 'Hematose',
+    q: 'O que é a hematose e onde ela ocorre?',
+    a: 'É o processo que ocorre nos <strong>capilares pulmonares</strong> (ao redor dos alvéolos), em que o sangue <strong>libera gás carbônico (CO₂) para os alvéolos</strong> e <strong>recebe oxigênio (O₂)</strong>, tornando-se <strong>oxigenado</strong>.',
+    tip: '💡 Hematose = troca nos pulmões: sai CO₂, entra O₂.'
+  },
+  {
+    id: 66, cat: 'vasos', topic: 'Circulação Sistêmica (Grande Circulação)',
+    q: 'Qual o trajeto da circulação sistêmica, do início ao fim?',
+    a: 'Começa no <strong>ventrículo esquerdo</strong>: o sangue oxigenado passa pela <strong>valva semilunar da aorta</strong> → <strong>artéria aorta</strong> → tecidos do corpo. Nos <strong>capilares</strong> ocorrem trocas de oxigênio, gás carbônico, nutrientes e resíduos. Depois o sangue volta pelas <strong>veias</strong> → <strong>veias cavas superior e inferior</strong> → <strong>átrio direito</strong>, onde ela termina.',
+    tip: '💡 Grande circulação: começa no Ventrículo Esquerdo e termina no Átrio Direito. Começa e termina "em lados opostos", igual à pequena!'
+  },
+  {
+    id: 67, cat: 'vasos', topic: 'Circulação Renal',
+    q: 'Como o sangue chega aos rins, o que acontece lá e por onde ele sai?',
+    a: 'O sangue chega pelas <strong>artérias renais direita e esquerda</strong>. Nos rins ocorre a <strong>filtração do sangue</strong>: remoção de resíduos e controle da <strong>quantidade de água e sais</strong>. O que precisa ser eliminado é excretado pela <strong>urina</strong>, e o sangue volta à circulação pelas <strong>veias renais</strong>.',
+    tip: '💡 Rim = filtro: entra pela artéria renal, sai filtrado pela veia renal.'
+  },
+  {
+    id: 68, cat: 'vasos', topic: 'Circulação Porta-Hepática',
+    q: 'Qual o trajeto da circulação digestória e hepática (porta-hepática)?',
+    a: 'Após a digestão, os nutrientes absorvidos no <strong>intestino</strong> passam para os capilares. Esse sangue rico em nutrientes vai pela <strong>veia porta hepática</strong> até o <strong>fígado</strong>, onde os nutrientes são <strong>processados, armazenados ou transformados</strong> e várias substâncias são metabolizadas. Depois sai pelas <strong>veias hepáticas</strong>, que desembocam na <strong>veia cava inferior</strong> e voltam ao coração.',
+    tip: '💡 Intestino → veia PORTA hepática → fígado → veias hepáticas → cava inferior. O fígado é a "porta" de entrada dos nutrientes!'
   }
 ];
 
 /* ==========================================================================
-   DATABASE: 20 EXAM QUESTIONS (SIMULADO AVALIATIVO)
+   DATABASE: 30 EXAM QUESTIONS (SIMULADO AVALIATIVO)
    ========================================================================== */
 const SIMULADO_QUESTIONS = [
   {
@@ -1410,6 +1576,126 @@ const SIMULADO_QUESTIONS = [
     ],
     ans: 0,
     exp: 'Sístole = contração (o sangue sai): AV fechadas e semilunares abertas, com o sangue indo para a aorta e o tronco pulmonar. Diástole = relaxamento (enchimento): as semilunares fecham ("tá") e, quando a pressão ventricular cai abaixo da atrial, as AV se abrem e o sangue entra nos ventrículos.'
+  },
+  {
+    cat: 'Condução Cardíaca',
+    q: '21. Sobre a sístole atrial, assinale a alternativa CORRETA:',
+    opts: [
+      'Os ventrículos se contraem e as valvas atrioventriculares ficam fechadas.',
+      'Os átrios se contraem enviando sangue aos ventrículos, que estão em diástole; as valvas atrioventriculares ficam abertas e as valvas da aorta e do tronco pulmonar permanecem fechadas.',
+      'Átrios e ventrículos se contraem ao mesmo tempo, com todas as valvas abertas.',
+      'Os átrios se contraem enviando sangue diretamente para a aorta.'
+    ],
+    ans: 1,
+    exp: 'Na sístole atrial, os átrios contraem e enchem os ventrículos (em diástole). Para isso, as valvas AV (tricúspide e mitral) estão abertas, e as valvas da aorta e do tronco pulmonar, fechadas. Na sístole ventricular é o contrário: AV fecham e as da aorta e do tronco pulmonar abrem.'
+  },
+  {
+    cat: 'Condução Cardíaca',
+    q: '22. Sobre o esqueleto fibroso e a automaticidade do coração, assinale a alternativa CORRETA:',
+    opts: [
+      'O esqueleto fibroso é formado por músculo estriado cardíaco e conduz o impulso elétrico entre todas as câmaras.',
+      'Assim como o músculo esquelético, o coração só se contrai quando recebe estímulos nervosos.',
+      'O sistema nervoso é quem gera cada batimento, e o nó sinoatrial apenas regula a força.',
+      'O esqueleto fibroso é de tecido conjuntivo denso, sustenta e fixa as valvas e isola eletricamente átrios e ventrículos; o coração tem automaticidade, gerando seus impulsos no nó sinoatrial, e o sistema nervoso apenas regula frequência e força.'
+    ],
+    ans: 3,
+    exp: 'O esqueleto fibroso (tecido conjuntivo denso) sustenta e fixa as valvas e isola eletricamente átrios e ventrículos. Diferente do músculo esquelético, o coração tem automaticidade: gera os próprios impulsos (normalmente no nó SA). O sistema nervoso só regula a frequência e a força dos batimentos.'
+  },
+  {
+    cat: 'Condução Cardíaca',
+    q: '23. Sobre o nó sinoatrial (SA), assinale a alternativa CORRETA:',
+    opts: [
+      'Localiza-se no átrio direito, perto da desembocadura da veia cava superior, e é o marcapasso natural do coração; suas células geram potenciais de ação espontaneamente, tornando o coração autorrítmico.',
+      'Localiza-se no ventrículo esquerdo, próximo à valva mitral, e provoca um atraso na condução.',
+      'Localiza-se no septo interventricular e se divide em ramo direito e esquerdo.',
+      'Só funciona enquanto o coração está ligado ao sistema nervoso, por isso o coração nunca bate fora do corpo.'
+    ],
+    ans: 0,
+    exp: 'O nó SA fica no átrio direito, perto da desembocadura da veia cava superior. É o marcapasso natural: suas células geram potenciais de ação espontaneamente, o que torna o coração autorrítmico (desde que receba O₂ e nutrientes). Por isso o coração pode continuar batendo por um período fora do corpo.'
+  },
+  {
+    cat: 'Condução Cardíaca',
+    q: '24. Qual estrutura, localizada na parte inferior do átrio direito, próxima à valva tricúspide e ao septo interatrial, provoca um pequeno atraso na condução para que os átrios terminem de enviar o sangue aos ventrículos?',
+    opts: [
+      'Nó sinoatrial.',
+      'Fibras de Purkinje.',
+      'Nó atrioventricular.',
+      'Esqueleto fibroso.'
+    ],
+    ans: 2,
+    exp: 'O nó atrioventricular (AV) fica na parte inferior do átrio direito, perto da tricúspide e do septo interatrial. Ele recebe o impulso dos feixes internodais e provoca um pequeno atraso, garantindo que os átrios terminem de esvaziar antes da contração ventricular.'
+  },
+  {
+    cat: 'Condução Cardíaca',
+    q: '25. Sobre o feixe de His, as fibras de Purkinje e a regulação autonômica do ritmo, assinale a alternativa CORRETA:',
+    opts: [
+      'O simpático diminui a frequência cardíaca e o parassimpático a aumenta.',
+      'O feixe de His leva o impulso do nó AV, pelo esqueleto fibroso, até o septo interventricular, onde se divide em ramos direito e esquerdo; as fibras de Purkinje espalham o impulso pelos ventrículos, que se contraem do ápice para a base. O simpático aumenta a frequência e o parassimpático a diminui.',
+      'As fibras de Purkinje ficam nos átrios e provocam a sístole atrial.',
+      'A contração ventricular ocorre da base em direção ao ápice, empurrando o sangue para as veias cavas.'
+    ],
+    ans: 1,
+    exp: 'Feixe de His: do nó AV, atravessando o esqueleto fibroso, até o septo interventricular, onde se divide em ramos direito e esquerdo. Purkinje: distribuem rapidamente o impulso pelo miocárdio ventricular, e a sístole ventricular ocorre do ápice para a base, levando o sangue ao tronco pulmonar e à aorta. Simpático acelera; parassimpático desacelera.'
+  },
+  {
+    cat: 'Vasos & Circulações',
+    q: '26. Sobre o trajeto do sangue e os tipos de capilares, assinale a alternativa CORRETA:',
+    opts: [
+      'O trajeto é coração → artérias → arteríolas → capilares → vênulas → veias → coração; os capilares sinusoides, com aberturas maiores que deixam passar até células, são encontrados no fígado, na medula óssea e no baço.',
+      'O trajeto é coração → veias → vênulas → capilares → arteríolas → artérias → coração.',
+      'Os capilares contínuos têm grandes poros e são típicos dos rins.',
+      'Os capilares têm cerca de 5 a 10 milímetros de diâmetro e paredes musculares espessas.'
+    ],
+    ans: 0,
+    exp: 'Trajeto: coração → artérias → arteríolas → capilares → vênulas → veias → coração. Capilares (5–10 micrômetros, uma camada de endotélio): contínuos (músculos e SNC), fenestrados com poros (rins, intestino, glândulas endócrinas) e sinusoides com aberturas maiores (fígado, medula óssea e baço).'
+  },
+  {
+    cat: 'Vasos & Circulações',
+    q: '27. Sobre arteríolas, vênulas e o retorno venoso, assinale a alternativa CORRETA:',
+    opts: [
+      'As vênulas têm mais músculo liso que as arteríolas e controlam o fluxo por vasoconstrição.',
+      'O sangue nas veias circula sob alta pressão, por isso não precisa de mecanismos auxiliares.',
+      'As válvulas venosas impulsionam o sangue para longe do coração.',
+      'As arteríolas têm músculo liso que regula o fluxo por vasoconstrição e vasodilatação; nas veias, a baixa pressão faz o retorno depender da bomba muscular (com as válvulas venosas impedindo o refluxo) e da bomba respiratória.'
+    ],
+    ans: 3,
+    exp: 'Arteríolas: músculo liso que controla o diâmetro (vasoconstrição/vasodilatação). Vênulas: paredes mais finas e com menos músculo liso. Como a pressão nas veias é baixa, o retorno depende da bomba muscular (músculos esqueléticos comprimem as veias; válvulas impedem o refluxo) e da bomba respiratória (variações de pressão na inspiração).'
+  },
+  {
+    cat: 'Vasos & Circulações',
+    q: '28. Sobre as túnicas dos vasos e as diferenças entre artérias e veias, assinale a alternativa CORRETA:',
+    opts: [
+      'A túnica adventícia é a mais interna e fica em contato direto com o sangue.',
+      'As veias têm paredes mais espessas, pulso e suportam pressões mais altas que as artérias.',
+      'A túnica íntima (endotélio) é a mais interna, a média (músculo liso e fibras elásticas) regula o diâmetro e é mais espessa nas artérias, e a adventícia (conjuntivo) é a externa; as artérias têm pulso e normalmente não têm válvulas, enquanto muitas veias têm válvulas e podem colabar.',
+      'As artérias são mais numerosas que as veias e sempre ficam na superfície do corpo.'
+    ],
+    ans: 2,
+    exp: 'Túnicas de dentro para fora: íntima (endotélio), média (músculo liso e fibras elásticas, mais espessa nas artérias) e adventícia (tecido conjuntivo). Artérias: parede espessa, pressão alta, pulso, geralmente profundas e sem válvulas. Veias: parede fina, lúmen maior, pressão baixa, podem colabar, muitas têm válvulas e são mais numerosas.'
+  },
+  {
+    cat: 'Vasos & Circulações',
+    q: '29. Sobre a circulação pulmonar (pequena circulação), assinale a alternativa CORRETA:',
+    opts: [
+      'Começa no ventrículo esquerdo e termina no átrio direito.',
+      'Começa quando o ventrículo direito se contrai: o sangue vai pelo tronco pulmonar e pelas artérias pulmonares até os capilares dos alvéolos, onde ocorre a hematose (sai CO₂, entra O₂), e volta pelas veias pulmonares até o átrio esquerdo, onde termina.',
+      'Na hematose, o sangue recebe gás carbônico dos alvéolos e libera oxigênio.',
+      'As veias pulmonares levam sangue pobre em oxigênio do coração aos pulmões.'
+    ],
+    ans: 1,
+    exp: 'Pequena circulação: ventrículo direito → valva do tronco pulmonar → tronco pulmonar → artérias pulmonares → capilares alveolares (hematose: libera CO₂ e recebe O₂) → veias pulmonares → átrio esquerdo. Quem começa no ventrículo esquerdo e termina no átrio direito é a circulação sistêmica.'
+  },
+  {
+    cat: 'Vasos & Circulações',
+    q: '30. Sobre a circulação sistêmica e as circulações renal e porta-hepática, assinale a alternativa CORRETA:',
+    opts: [
+      'A circulação sistêmica começa no ventrículo esquerdo, pela aorta, e termina no átrio direito, pelas veias cavas; os rins filtram o sangue que chega pelas artérias renais; e o sangue do intestino, rico em nutrientes, vai pela veia porta hepática ao fígado e depois segue pelas veias hepáticas até a veia cava inferior.',
+      'O sangue do intestino vai direto para o coração pela veia cava superior, sem passar pelo fígado.',
+      'O sangue chega aos rins pelas veias renais e sai pelas artérias renais.',
+      'A circulação sistêmica começa no ventrículo direito e termina no átrio esquerdo.'
+    ],
+    ans: 0,
+    exp: 'Grande circulação: ventrículo esquerdo → valva da aorta → aorta → tecidos → veias → veias cavas → átrio direito. Renal: entra pelas artérias renais, o sangue é filtrado (resíduos, água e sais) e sai pelas veias renais. Porta-hepática: intestino → veia porta hepática → fígado → veias hepáticas → veia cava inferior.'
   }
 ];
 
@@ -1417,7 +1703,7 @@ const SIMULADO_QUESTIONS = [
    ENGINE: FLASHCARDS, FILTROS DE DIFICULDADE, RESUMO E SIMULADO
    ========================================================================== */
 (() => {
-  // Dificuldade padrão baseada na complexidade de cada tema (1..41)
+  // Dificuldade padrão baseada na complexidade de cada tema (1..68)
   const DEFAULT_DIFF = {
     // 1-12: Sangue, Líquidos & Sistemas Sanguífero e Linfático
     1:'facil', 2:'facil', 3:'facil', 4:'medio', 5:'facil', 6:'medio',
@@ -1429,7 +1715,14 @@ const SIMULADO_QUESTIONS = [
     24:'facil', 25:'medio', 26:'medio', 27:'facil', 28:'dificil', 29:'medio', 30:'facil', 31:'medio',
     // 32-41: Valvas, Coronárias & Ciclo Cardíaco
     32:'facil', 33:'facil', 34:'medio', 35:'medio', 36:'medio', 37:'dificil',
-    38:'facil', 39:'dificil', 40:'dificil', 41:'dificil'
+    38:'facil', 39:'dificil', 40:'dificil', 41:'dificil',
+    // 42-51: Sístole Atrial, Esqueleto Fibroso & Sistema de Condução
+    42:'medio', 43:'medio', 44:'medio', 45:'facil', 46:'dificil',
+    47:'medio', 48:'facil', 49:'dificil', 50:'dificil', 51:'dificil',
+    // 52-68: Vasos, Retorno Venoso & Circulações
+    52:'facil', 53:'facil', 54:'dificil', 55:'medio', 56:'medio', 57:'medio',
+    58:'facil', 59:'facil', 60:'facil', 61:'medio', 62:'medio', 63:'medio',
+    64:'dificil', 65:'facil', 66:'dificil', 67:'medio', 68:'dificil'
   };
 
   // Enriquecer cards com dificuldade padrão
@@ -1459,7 +1752,7 @@ const SIMULADO_QUESTIONS = [
   }
 
   // Estado da navegação
-  let currentFilter = 'all'; // 'all', 'sangue', 'coracao', 'externa', 'valvas', 'diff-facil', 'diff-medio', 'diff-dificil'
+  let currentFilter = 'all'; // 'all', 'sangue', 'coracao', 'externa', 'valvas', 'conducao', 'vasos', 'diff-facil', 'diff-medio', 'diff-dificil'
   let currentDeck = [...FLASHCARDS];
   let currentIdx = 0;
 
@@ -1497,6 +1790,8 @@ const SIMULADO_QUESTIONS = [
     { key: 'coracao', label: '2. Posição & Paredes', count: FLASHCARDS.filter(c => c.cat === 'coracao').length },
     { key: 'externa', label: '3. Câmaras & Sulcos', count: FLASHCARDS.filter(c => c.cat === 'externa').length },
     { key: 'valvas', label: '4. Valvas & Ciclo', count: FLASHCARDS.filter(c => c.cat === 'valvas').length },
+    { key: 'conducao', label: '5. Condução Cardíaca', count: FLASHCARDS.filter(c => c.cat === 'conducao').length },
+    { key: 'vasos', label: '6. Vasos & Circulações', count: FLASHCARDS.filter(c => c.cat === 'vasos').length },
     { key: 'diff-facil', label: '🟢 Fácil', count: 0, isDiff: true },
     { key: 'diff-medio', label: '🟡 Médio', count: 0, isDiff: true },
     { key: 'diff-dificil', label: '🔴 Difícil', count: 0, isDiff: true }
@@ -1762,7 +2057,9 @@ const SIMULADO_QUESTIONS = [
     { key: 'sangue', label: '1. Sangue & Linfa' },
     { key: 'coracao', label: '2. Posição & Paredes' },
     { key: 'externa', label: '3. Câmaras & Sulcos' },
-    { key: 'valvas', label: '4. Valvas & Ciclo' }
+    { key: 'valvas', label: '4. Valvas & Ciclo' },
+    { key: 'conducao', label: '5. Condução Cardíaca' },
+    { key: 'vasos', label: '6. Vasos & Circulações' }
   ].forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'filter';
