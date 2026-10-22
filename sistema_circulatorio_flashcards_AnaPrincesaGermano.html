@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#FBF8F5">
+<title>Sistema Circulatório — Germano Estudos</title>
+<link rel="icon" type="image/png" href="public/logo-germano-estudos.png">
+<link rel="apple-touch-icon" href="public/logo-germano-estudos.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   GERMANO ESTUDOS — MESMOS TOKENS DO HUB (index.html)
+   ========================================================================== */
+:root {
+  --paper:        #FBF8F5;
+  --paper-deep:   #F4EEF4;
+  --surface:      #FFFFFF;
+  --lilac-wash:   #F1E9F7;
+  --lilac-soft:   #E6D9F2;
+  --lilac:        #C9B1E4;
+
+  --ink:          #24132F;
+  --ink-soft:     #4E3D5C;
+  --ink-muted:    #8A7B96;
+  --plum:         #4A1F6E;
+  --violet:       #6B35A0;
+  --violet-hover: #5A2B8A;
+
+  --rose:         #C95683;
+  --rose-soft:    #F7E3EB;
+  --blush:        #F2C4D4;
+
+  --easy:         #5C8F76;
+  --easy-soft:    #E5F0EA;
+  --mid:          #B9853E;
+  --mid-soft:     #F6EBDA;
+  --hard:         #B24A66;
+  --hard-soft:    #F6E1E7;
+
+  --rule:         #E4DAE6;
+  --rule-strong:  #CDBCD6;
+
+  --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --sans:  'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-sm: 10px;
+  --radius:    16px;
+  --radius-lg: 24px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.29 0 0 0 0 0.12 0 0 0 0 0.43 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+::selection { background: var(--blush); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+code.path {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.8em;
+  background: var(--lilac-wash);
+  color: var(--plum);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+/* ==========================================================================
+   TOPO (idêntico ao hub)
+   ========================================================================== */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(251, 248, 245, 0.92);
+  backdrop-filter: saturate(1.2) blur(10px);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+
+.wordmark { display: flex; align-items: center; gap: 12px; }
+.wordmark-mark {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--rule-strong);
+  overflow: hidden; display: flex; align-items: center; justify-content: center;
+  background: var(--surface); box-shadow: 0 2px 8px rgba(74, 31, 110, 0.12); flex-shrink: 0;
+}
+.wordmark-mark .logo-avatar {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block;
+}
+
+.deck-tag-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  padding: 5px 14px 5px 6px; border-radius: 999px;
+  font-size: 0.76rem; font-weight: 700; color: var(--plum);
+  margin-bottom: 14px; box-shadow: 0 2px 8px rgba(74, 31, 110, 0.08);
+}
+.deck-tag-logo {
+  width: 22px; height: 22px; border-radius: 50%;
+  object-fit: cover; object-position: center 20%;
+  border: 1px solid var(--rule); flex-shrink: 0;
+}
+.wordmark-text { display: flex; align-items: baseline; gap: 6px; line-height: 1; }
+.w-germano {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 1.45rem; color: var(--plum); letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 72;
+}
+.w-estudos {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--rose);
+}
+
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.88rem; font-weight: 600; color: var(--plum);
+  padding: 9px 16px 9px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: var(--surface);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.back-link:hover { border-color: var(--violet); background: var(--lilac-wash); }
+.back-link svg { transition: transform 0.25s var(--ease); }
+.back-link:hover svg { transform: translateX(-3px); }
+
+/* ==========================================================================
+   HERO DA DISCIPLINA
+   ========================================================================== */
+.hero { padding: 52px 0 0; }
+
+.crumbs {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 22px;
+}
+.crumbs a { transition: color 0.2s ease; }
+.crumbs a:hover { color: var(--violet); }
+.crumbs .sep { color: var(--lilac); font-size: 0.8rem; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: end;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.4vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144;
+}
+.hero h1 em { font-style: italic; color: var(--violet); }
+
+.hero-lede { margin-top: 18px; max-width: 500px; font-size: 1.04rem; color: var(--ink-soft); }
+
+.credit {
+  margin-top: 18px;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 0.86rem; color: var(--ink-muted);
+}
+
+/* Painel de progresso */
+.progress-panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px 20px;
+  overflow: hidden;
+}
+.progress-panel .sprig {
+  position: absolute; right: -8px; top: -6px; width: 96px; opacity: 0.85; pointer-events: none;
+}
+
+.figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.figure-num {
+  font-family: var(--serif); font-size: 2rem; line-height: 1;
+  color: var(--plum); font-variant-numeric: lining-nums tabular-nums;
+  font-variation-settings: "opsz" 96;
+}
+.figure-num small { font-size: 0.55em; color: var(--ink-muted); }
+.figure-label { margin-top: 6px; font-size: 0.78rem; color: var(--ink-muted); }
+
+.progress-line { height: 4px; background: var(--lilac-wash); border-radius: 999px; overflow: hidden; margin-top: 18px; }
+.progress-line span { display: block; height: 100%; width: 0%; background: var(--violet); border-radius: 999px; transition: width 0.5s var(--ease); }
+.progress-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.76rem; color: var(--ink-muted); }
+
+/* ==========================================================================
+   ABAS
+   ========================================================================== */
+.tabs {
+  display: flex; gap: 6px;
+  margin-top: 44px;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  position: relative;
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 14px 18px 16px;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.tab .count { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; color: var(--ink-muted); }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--plum); font-style: italic; }
+.tab[aria-selected="true"]::after {
+  content: ""; position: absolute; left: 18px; right: 18px; bottom: -1px;
+  height: 2px; background: var(--violet); border-radius: 2px;
+}
+
+.view { display: none; padding: 32px 0 24px; }
+.view.active { display: block; animation: rise 0.6s var(--ease); }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ==========================================================================
+   FILTROS
+   ========================================================================== */
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
+}
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.filter {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.84rem; font-weight: 500;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.filter .n { font-family: var(--serif); font-style: italic; color: var(--rose); }
+.filter .c { font-size: 0.74rem; color: var(--ink-muted); }
+.filter:hover { border-color: var(--rule-strong); color: var(--ink); }
+.filter[aria-pressed="true"] { background: var(--plum); border-color: var(--plum); color: #FFF; }
+.filter[aria-pressed="true"] .n { color: var(--blush); }
+.filter[aria-pressed="true"] .c { color: rgba(255,255,255,0.7); }
+.filter.review[aria-pressed="false"] { background: var(--mid-soft); border-color: transparent; color: var(--mid); }
+.filter.review[aria-pressed="false"] .c { color: var(--mid); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.86rem; font-weight: 600; color: var(--plum);
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: var(--surface);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.btn-ghost:hover { border-color: var(--violet); background: var(--lilac-wash); }
+
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--plum); color: #FFF;
+  font-weight: 600; font-size: 0.92rem;
+  padding: 13px 22px;
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 8px 20px -10px rgba(74, 31, 110, 0.55);
+  transition: background 0.2s ease, transform 0.2s var(--ease);
+}
+.btn-primary:hover { background: var(--violet-hover); transform: translateY(-1px); }
+
+/* ==========================================================================
+   FLASHCARD
+   ========================================================================== */
+.stage { max-width: 820px; margin: 0 auto; }
+
+.scene { height: 460px; perspective: 1600px; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
+
+.flipper {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease);
+}
+.flipper.is-flipped { transform: rotateY(180deg); }
+
+.face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--rule);
+  display: flex; flex-direction: column;
+  padding: 26px 32px 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 50px -40px rgba(36, 19, 47, 0.45), 0 2px 0 rgba(255,255,255,0.8) inset;
+}
+
+.face-front { background: var(--surface); }
+.face-front::before {
+  /* margem de caderno */
+  content: ""; position: absolute; top: 0; bottom: 0; left: 22px;
+  width: 1px; background: var(--blush); opacity: 0.7;
+}
+.face-front .lily-corner {
+  position: absolute; right: -18px; bottom: -22px; width: 150px; opacity: 0.55; pointer-events: none;
+}
+
+.face-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, var(--lilac-wash) 0%, #FBF7FD 100%);
+  border-color: var(--lilac-soft);
+}
+
+.face-meta {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.face-topic {
+  font-family: var(--serif); font-style: italic;
+  font-size: 0.98rem; color: var(--plum);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.face-topic .n { color: var(--rose); margin-right: 6px; }
+.face-count {
+  font-family: var(--serif); font-size: 0.95rem; color: var(--ink-muted);
+  font-variant-numeric: tabular-nums lining-nums; white-space: nowrap;
+}
+
+.face-center {
+  position: relative;
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 18px 8px; min-height: 0;
+}
+
+.question {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: center;
+  max-width: 620px;
+  font-variation-settings: "opsz" 72;
+  text-wrap: balance;
+}
+
+.answer-scroll {
+  width: 100%; max-height: 100%; overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin; scrollbar-color: var(--lilac) transparent;
+}
+.answer { font-size: 1rem; line-height: 1.7; color: var(--ink); }
+.answer strong { color: var(--plum); font-weight: 700; }
+.answer em { color: var(--ink-soft); }
+
+.tip {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-left: 3px solid var(--rose);
+  border-radius: 4px 12px 12px 4px;
+  font-size: 0.88rem; color: var(--ink-soft);
+}
+.tip:empty { display: none; }
+.tip strong { color: var(--rose); font-weight: 700; }
+
+.face-foot {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule-strong);
+  font-size: 0.78rem; color: var(--ink-muted);
+}
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.74rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 999px;
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill-none { background: var(--paper-deep); color: var(--ink-muted); }
+.pill-mastered { background: var(--easy-soft); color: var(--easy); }
+.pill-review { background: var(--mid-soft); color: var(--mid); }
+
+/* Controles */
+.controls {
+  display: grid;
+  grid-template-columns: 48px 1fr 1fr 1fr 48px;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.btn-round {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule-strong); background: var(--surface);
+  color: var(--ink-soft);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.btn-round:hover { border-color: var(--violet); color: var(--violet); }
+
+.btn-rate {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 48px; border-radius: 999px;
+  font-weight: 600; font-size: 0.88rem;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  transition: all 0.2s var(--ease);
+}
+.btn-rate:hover { transform: translateY(-1px); }
+.btn-rate-easy { color: var(--easy); }
+.btn-rate-easy:hover, .btn-rate-easy.active { background: var(--easy-soft); border-color: var(--easy); }
+.btn-rate-mid  { color: var(--mid); }
+.btn-rate-mid:hover, .btn-rate-mid.active  { background: var(--mid-soft); border-color: var(--mid); }
+.btn-rate-hard { color: var(--hard); }
+.btn-rate-hard:hover, .btn-rate-hard.active { background: var(--hard-soft); border-color: var(--hard); }
+
+.pill-facil   { background: var(--easy-soft); color: var(--easy); }
+.pill-medio   { background: var(--mid-soft);  color: var(--mid); }
+.pill-dificil { background: var(--hard-soft); color: var(--hard); }
+
+.keys {
+  margin-top: 16px; text-align: center;
+  font-size: 0.76rem; color: var(--ink-muted);
+}
+kbd {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  padding: 2px 7px; border-radius: 6px;
+  border: 1px solid var(--rule-strong); border-bottom-width: 2px;
+  background: var(--surface); color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   RESUMO
+   ========================================================================== */
+.search {
+  position: relative; width: 320px; max-width: 100%;
+}
+.search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-muted); }
+.search input {
+  width: 100%;
+  font: inherit; font-size: 0.92rem; color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 11px 16px 11px 40px;
+  transition: border-color 0.2s ease;
+}
+.search input::placeholder { color: var(--ink-muted); }
+.search input:focus { outline: none; border-color: var(--violet); }
+
+.notes {
+  columns: 2 360px;
+  column-gap: 20px;
+}
+
+.note {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 22px 24px 20px;
+}
+.note-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.note-head .eyebrow { letter-spacing: 0.12em; }
+.note-id { font-family: var(--serif); font-style: italic; color: var(--rose); font-size: 0.92rem; }
+.note h3 {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.12rem; line-height: 1.35; letter-spacing: -0.005em;
+  color: var(--ink); margin-bottom: 10px;
+}
+.note .answer { font-size: 0.9rem; color: var(--ink-soft); }
+.note .tip { background: var(--paper); margin-top: 14px; font-size: 0.84rem; }
+
+.empty {
+  padding: 48px 0; text-align: center;
+  font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--ink-muted);
+}
+
+mark { background: var(--blush); color: inherit; border-radius: 3px; padding: 0 2px; }
+
+/* ==========================================================================
+   SIMULADO
+   ========================================================================== */
+.exam-intro {
+  display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.exam-intro p { max-width: 560px; color: var(--ink-soft); font-size: 0.95rem; }
+.exam-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.answered { font-size: 0.82rem; color: var(--ink-muted); margin-top: 6px; }
+
+.score {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  background: var(--plum);
+  color: #F3EAFB;
+  border-radius: var(--radius-lg);
+  padding: 30px 32px;
+  margin-bottom: 28px;
+}
+.score.show { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; animation: rise 0.6s var(--ease); }
+.score-num {
+  font-family: var(--serif); font-size: 4.2rem; line-height: 0.9; color: #FFF;
+  font-variation-settings: "opsz" 144;
+}
+.score-num small { font-size: 0.32em; color: var(--blush); margin-left: 4px; }
+.score h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: #FFF; }
+.score h3 em { color: var(--blush); }
+.score p { font-size: 0.9rem; color: rgba(243, 234, 251, 0.8); margin-top: 4px; }
+.breakdown { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.breakdown span {
+  font-size: 0.76rem; padding: 5px 11px; border-radius: 999px;
+  background: rgba(255,255,255,0.1); color: #F3EAFB;
+}
+.breakdown strong { color: #FFF; }
+.score .actions { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+.score .btn-ghost { background: transparent; border-color: rgba(255,255,255,0.3); color: #FFF; }
+.score .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #FFF; }
+.score .lily-ghost { position: absolute; right: -30px; bottom: -40px; width: 200px; opacity: 0.12; color: #FFF; pointer-events: none; }
+
+.q {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 26px 30px 24px;
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 4px 18px;
+}
+.q-num {
+  font-family: var(--serif); font-size: 2rem; line-height: 1; color: var(--lilac);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.q.is-right .q-num { color: var(--easy); }
+.q.is-wrong .q-num { color: var(--hard); }
+.q-cat { display: block; margin-bottom: 6px; }
+.q-title { font-weight: 600; font-size: 1.02rem; line-height: 1.5; color: var(--ink); margin-bottom: 14px; }
+
+.opts { grid-column: 2; display: flex; flex-direction: column; gap: 8px; }
+
+.opt {
+  display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-size: 0.92rem; line-height: 1.5; color: var(--ink);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.opt:hover:not(:disabled) { border-color: var(--violet); background: var(--surface); }
+.opt:disabled { cursor: default; }
+.opt-letter {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--serif); font-style: italic; font-size: 0.92rem;
+  background: var(--surface); border: 1px solid var(--rule-strong); color: var(--plum);
+}
+.opt.correct { background: var(--easy-soft); border-color: var(--easy); }
+.opt.correct .opt-letter { background: var(--easy); border-color: var(--easy); color: #FFF; }
+.opt.wrong { background: var(--hard-soft); border-color: var(--hard); }
+.opt.wrong .opt-letter { background: var(--hard); border-color: var(--hard); color: #FFF; }
+.opt.dim { opacity: 0.55; }
+
+.exp {
+  grid-column: 2;
+  display: none;
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--violet);
+  background: var(--lilac-wash);
+  border-radius: 4px 12px 12px 4px;
+  font-size: 0.9rem; color: var(--ink-soft);
+}
+.exp.show { display: block; }
+.exp b { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--plum); margin-right: 4px; }
+
+.exam-end { text-align: center; margin-top: 32px; }
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+.footer { margin-top: 56px; padding: 32px 0 44px; border-top: 1px solid var(--rule); }
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  font-size: 0.84rem; color: var(--ink-muted);
+}
+.sig {
+  font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-soft);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-logo-thumb { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--rule-strong); object-fit: cover; object-position: center 20%; box-shadow: 0 2px 6px rgba(74, 31, 110, 0.1); flex-shrink: 0; }
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+@media (max-width: 920px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 18px; }
+  .hero { padding-top: 36px; }
+  .back-link span { display: none; }
+  .back-link { padding: 9px 12px; }
+  .tabs { margin-top: 32px; }
+  .tab { padding: 12px 12px 14px; font-size: 1.05rem; }
+  .tab[aria-selected="true"]::after { left: 12px; right: 12px; }
+  .scene { height: 540px; }
+  .face { padding: 22px 22px 18px; }
+  .face-front::before { left: 12px; }
+  .controls { grid-template-columns: 44px 1fr 1fr 1fr 44px; gap: 6px; }
+  .btn-round { width: 44px; height: 44px; }
+  .btn-rate { font-size: 0.8rem; height: 44px; gap: 4px; }
+  .keys { display: none; }
+  .q { grid-template-columns: minmax(0, 1fr); padding: 22px 20px; }
+  .q-num { font-size: 1.5rem; margin-bottom: 4px; }
+  .opts, .exp { grid-column: 1; }
+  .score.show { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .search { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipper { transition: none; }
+  .view.active { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-lily" viewBox="0 0 24 24">
+      <path d="M12 21V13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 13C10.2 10.4 10.2 6.6 12 3.5C13.8 6.6 13.8 10.4 12 13Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M12 13C9.4 12.6 6.4 10.8 5 7.6C8.2 7.8 10.8 9.8 12 13Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M12 13C14.6 12.6 17.6 10.8 19 7.6C15.8 7.8 13.2 9.8 12 13Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M12 17.5C10.4 16 8.4 15.6 6.8 16.2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-left" viewBox="0 0 24 24">
+      <path d="M19 12H6M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-right" viewBox="0 0 24 24">
+      <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24">
+      <path d="M4 7h3c4 0 6 10 10 10h3M4 17h3c1.6 0 2.8-1.6 3.9-3.6M13.1 9.6C14.2 8.4 15.4 7 17 7h3M17 4l3 3-3 3M17 14l3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 8v4.5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-sprig" viewBox="0 0 120 90">
+      <path d="M8 84 C40 70 70 46 108 10" fill="none" stroke="#C9B1E4" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M40 66 c-4 -12 2 -24 12 -28 c2 12 -2 22 -12 28 Z" fill="#E6D9F2"/>
+      <path d="M62 48 c10 -2 20 4 22 14 c-12 0 -20 -5 -22 -14 Z" fill="#E6D9F2"/>
+      <path d="M78 34 c-2 -12 6 -22 16 -24 c0 12 -6 20 -16 24 Z" fill="#E6D9F2"/>
+      <circle cx="108" cy="10" r="4" fill="#F2C4D4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="wordmark" aria-label="Germano Estudos — início">
+      <span class="wordmark-mark"><img src="public/logo-germano-estudos.png" alt="Logo Germano Estudos" class="logo-avatar"></span>
+      <span class="wordmark-text"><span class="w-germano">Germano</span><span class="w-estudos">estudos</span></span>
+    </a>
+    <a class="back-link" href="index.html">
+      <svg width="16" height="16"><use href="#i-left"/></svg>
+      <span>Voltar ao caderno</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Caminho">
+        <a class="eyebrow" href="index.html">Germano Estudos</a>
+        <span class="sep">/</span>
+        <a class="eyebrow" href="index.html#disciplinas">I. Anatomia Humana</a>
+        <span class="sep">/</span>
+        <span class="eyebrow" style="color: var(--plum);">Sistema Circulatório</span>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <div class="deck-tag-pill">
+            <img src="public/logo-germano-estudos.png" alt="Logo" class="deck-tag-logo">
+            <span>Caderno da Ana • UNESP FCT</span>
+          </div>
+          <h1>Sistema <em>Circulatório</em></h1>
+          <p class="hero-lede">
+            Sangue, linfa e coração da sua apostila em cartões para virar, um resumo
+            para consulta rápida e um simulado para ver o que já ficou.
+          </p>
+          <div class="credit">
+            <svg width="12" height="12" style="color: var(--rose)"><use href="#i-heart"/></svg>
+            Feito com carinho por Murilo Fuzi Correia
+          </div>
+        </div>
+
+        <aside class="progress-panel" aria-label="Seu progresso">
+          <svg class="sprig" aria-hidden="true"><use href="#i-sprig"/></svg>
+          <span class="eyebrow">Seu progresso</span>
+          <div class="figures">
+            <div>
+              <div class="figure-num" id="fig-mastered">0<small>/41</small></div>
+              <div class="figure-label">já sei</div>
+            </div>
+            <div>
+              <div class="figure-num" id="fig-review">0</div>
+              <div class="figure-label">para revisar</div>
+            </div>
+            <div>
+              <div class="figure-num" id="fig-grade">—</div>
+              <div class="figure-label">nota no simulado</div>
+            </div>
+          </div>
+          <div class="progress-line"><span id="progress-bar"></span></div>
+          <div class="progress-foot">
+            <span>domínio do baralho</span>
+            <span id="progress-pct">0%</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Modos de estudo">
+        <button class="tab" role="tab" id="tab-cards"  aria-controls="view-cards"  aria-selected="true">Flashcards <span class="count">41</span></button>
+        <button class="tab" role="tab" id="tab-notes"  aria-controls="view-notes"  aria-selected="false">Resumo <span class="count">41</span></button>
+        <button class="tab" role="tab" id="tab-exam"   aria-controls="view-exam"   aria-selected="false">Simulado <span class="count">20</span></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <!-- ================= FLASHCARDS ================= -->
+    <section class="view active" id="view-cards" role="tabpanel" aria-labelledby="tab-cards">
+      <div class="toolbar">
+        <div class="filters" id="filters" role="group" aria-label="Filtrar por bloco"></div>
+        <button class="btn-ghost" id="btn-shuffle">
+          <svg width="16" height="16"><use href="#i-shuffle"/></svg>
+          Embaralhar
+        </button>
+      </div>
+
+      <div class="stage">
+        <div class="scene" id="scene" role="button" tabindex="0" aria-label="Virar cartão">
+          <div class="flipper" id="flipper">
+            <div class="face face-front">
+              <svg class="lily-corner" viewBox="0 0 24 24" style="color: var(--lilac)" aria-hidden="true"><use href="#i-lily"/></svg>
+              <div class="face-meta">
+                <span class="face-topic" id="front-topic"></span>
+                <span class="face-count" id="front-count"></span>
+              </div>
+              <div class="face-center">
+                <p class="question" id="front-q"></p>
+              </div>
+              <div class="face-foot">
+                <span>toque para ver a resposta</span>
+                <span class="pill pill-none" id="front-status">não avaliado</span>
+              </div>
+            </div>
+
+            <div class="face face-back">
+              <div class="face-meta">
+                <span class="face-topic" id="back-topic"></span>
+                <span class="face-count" id="back-count"></span>
+              </div>
+              <div class="face-center">
+                <div class="answer-scroll">
+                  <div class="answer" id="back-a"></div>
+                  <div class="tip" id="back-tip"></div>
+                </div>
+              </div>
+              <div class="face-foot">
+                <span>toque para voltar à pergunta</span>
+                <span>da apostila</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn-round" id="btn-prev" aria-label="Cartão anterior"><svg width="18" height="18"><use href="#i-left"/></svg></button>
+          <button class="btn-rate btn-rate-easy" id="btn-rate-easy" title="Marcar como Fácil (tecla 1)">
+            🟢 Fácil
+          </button>
+          <button class="btn-rate btn-rate-mid" id="btn-rate-mid" title="Marcar como Médio (tecla 2)">
+            🟡 Médio
+          </button>
+          <button class="btn-rate btn-rate-hard" id="btn-rate-hard" title="Marcar como Difícil (tecla 3)">
+            🔴 Difícil
+          </button>
+          <button class="btn-round" id="btn-next" aria-label="Próximo cartão"><svg width="18" height="18"><use href="#i-right"/></svg></button>
+        </div>
+
+        <p class="keys"><kbd>espaço</kbd> vira &nbsp;·&nbsp; <kbd>←</kbd> <kbd>→</kbd> navegam &nbsp;·&nbsp; <kbd>1</kbd> Fácil <kbd>2</kbd> Médio <kbd>3</kbd> Difícil</p>
+      </div>
+    </section>
+
+    <!-- ================= RESUMO ================= -->
+    <section class="view" id="view-notes" role="tabpanel" aria-labelledby="tab-notes">
+      <div class="toolbar">
+        <div class="filters" id="note-filters" role="group" aria-label="Filtrar resumo por bloco"></div>
+        <label class="search">
+          <svg width="16" height="16"><use href="#i-search"/></svg>
+          <input type="search" id="search" placeholder="Buscar: pericárdio, mitral, linfa…" aria-label="Buscar no resumo">
+        </label>
+      </div>
+      <div class="notes" id="notes"></div>
+    </section>
+
+    <!-- ================= SIMULADO ================= -->
+    <section class="view" id="view-exam" role="tabpanel" aria-labelledby="tab-exam">
+      <div class="exam-intro">
+        <div>
+          <p>20 questões feitas a partir da apostila. A resposta aparece assim que você escolhe uma alternativa. No fim, veja sua nota de 0 a 10.</p>
+          <div class="answered" id="answered">0 de 20 respondidas</div>
+        </div>
+        <div class="exam-actions">
+          <button class="btn-ghost" id="btn-reset">Recomeçar</button>
+          <button class="btn-primary" id="btn-grade-top">Ver minha nota</button>
+        </div>
+      </div>
+
+      <div class="score" id="score">
+        <div class="score-num" id="score-num">0<small>/10</small></div>
+        <div>
+          <h3 id="score-msg"></h3>
+          <p id="score-detail"></p>
+          <div class="breakdown" id="breakdown"></div>
+        </div>
+        <div class="actions">
+          <button class="btn-ghost" id="btn-wrong">Só as que errei</button>
+          <button class="btn-ghost" id="btn-all" style="display:none;">Ver todas</button>
+        </div>
+        <svg class="lily-ghost" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lily"/></svg>
+      </div>
+
+      <div id="questions"></div>
+
+      <div class="exam-end">
+        <button class="btn-primary" id="btn-grade-bottom">Finalizar e ver minha nota</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="public/logo-germano-estudos.png" alt="Logo" class="footer-logo-thumb">
+      <span class="sig">
+        <svg width="14" height="14" style="color: var(--rose)"><use href="#i-heart"/></svg>
+        feito com carinho por Murilo Fuzi Correia
+      </span>
+    </div>
+    <span>Germano Estudos · Anatomia Humana · Sistema Circulatório</span>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   DADOS: 41 FLASHCARDS + 20 QUESTÕES (extraídos da apostila)
+   ========================================================================== */
+
+const FLASHCARDS = [
+  // --- BLOCO 1: SANGUE, LÍQUIDOS CORPORAIS, SISTEMAS SANGUÍFERO E LINFÁTICO (12 CARTÕES) ---
+  {
+    id: 1, cat: 'sangue', topic: 'Sangue: Composição',
+    q: 'O que é o sangue e de que ele é composto?',
+    a: 'O sangue é um <strong>tecido conjuntivo líquido</strong> que circula pelos vasos sanguíneos. É composto por <strong>plasma</strong> e <strong>elementos figurados</strong>:<br>• <strong>Eritrócitos (hemácias):</strong> transportam oxigênio e dão a cor vermelha ao sangue.<br>• <strong>Leucócitos:</strong> defesa do organismo.<br>• <strong>Plaquetas:</strong> coagulação.',
+    tip: '💡 Eritrócito e hemácia são a mesma célula! Elementos figurados: Hemácias (O₂) · Leucócitos (defesa) · Plaquetas (coagulação).'
+  },
+  {
+    id: 2, cat: 'sangue', topic: 'Plasma e Volume de Sangue',
+    q: 'Quanto do volume sanguíneo corresponde ao plasma, do que ele é formado e quantos litros de sangue um adulto possui?',
+    a: '• O <strong>plasma</strong> representa cerca de <strong>55% do volume sanguíneo</strong>.<br>• É composto principalmente por <strong>água</strong>, além de proteínas, sais minerais, hormônios, lipídios e outras substâncias.<br>• Um adulto possui aproximadamente <strong>5 litros de sangue</strong>, variando conforme o tamanho corporal e outros fatores.',
+    tip: '💡 Números para a prova: plasma ≈ 55% do sangue · adulto ≈ 5 L de sangue.'
+  },
+  {
+    id: 3, cat: 'sangue', topic: 'Líquido Intersticial',
+    q: 'O que é o líquido intersticial e quanto a água representa do peso corporal?',
+    a: 'É um <strong>líquido extracelular</strong> que ocupa os <strong>espaços entre as células</strong>, permitindo a troca de nutrientes, oxigênio e resíduos metabólicos <strong>entre o sangue e os tecidos</strong>.<br>• A <strong>água</strong> representa aproximadamente <strong>50% a 70% do peso corporal</strong>, distribuindo-se entre os compartimentos <em>intracelular</em> e <em>extracelular</em>.',
+    tip: '💡 Intersticial = "entre" as células. É o meio de troca entre o capilar e o tecido.'
+  },
+  {
+    id: 4, cat: 'sangue', topic: 'Linfa: Formação e Funções',
+    q: 'Como a linfa é formada, por onde ela circula e quais são suas funções?',
+    a: 'A linfa se forma quando parte do <strong>líquido intersticial entra nos capilares linfáticos</strong>. É um líquido geralmente <em>transparente ou levemente amarelado</em> que circula pelos <strong>vasos linfáticos</strong>, <strong>participa da defesa imunológica</strong> e <strong>devolve à circulação sanguínea o excesso de líquido dos tecidos</strong>.',
+    tip: '💡 Sequência: Sangue → (sai do capilar) → Líquido intersticial → (entra no capilar linfático) → Linfa.'
+  },
+  {
+    id: 5, cat: 'sangue', topic: 'Sistema Sanguífero: Componentes',
+    q: 'Do que é formado o sistema sanguífero e qual o papel do coração, das artérias, dos capilares e das veias?',
+    a: 'É formado pelo <strong>coração</strong> e pelos <strong>vasos sanguíneos</strong> (artérias, capilares e veias):<br>• <strong>Coração:</strong> funciona como uma <strong>bomba contrátil</strong>, impulsionando o sangue pelos vasos.<br>• <strong>Artérias:</strong> levam o sangue <em>para os tecidos</em>.<br>• <strong>Capilares:</strong> permitem as <strong>trocas de substâncias</strong>.<br>• <strong>Veias:</strong> conduzem o sangue <em>de volta ao coração</em>.',
+    tip: '💡 Artéria = sai do coração. Veia = volta ao coração. Capilar = troca.'
+  },
+  {
+    id: 6, cat: 'sangue', topic: 'Sistema Fechado × Sistema Aberto',
+    q: 'Por que a circulação sanguínea é um sistema FECHADO e o sistema linfático é considerado ABERTO?',
+    a: '• <strong>Circulação sanguínea = sistema fechado:</strong> o sangue <strong>permanece dentro dos vasos sanguíneos</strong>.<br>• <strong>Sistema linfático = sistema aberto:</strong> ele <strong>começa nos tecidos</strong>, com capilares linfáticos que recolhem o excesso de líquido intersticial, e devolve esse líquido à circulação sanguínea.',
+    tip: '💡 Fechado = o sangue nunca sai dos vasos. Aberto = começa "solto" nos tecidos.'
+  },
+  {
+    id: 7, cat: 'sangue', topic: 'Bombeamento em Repouso e Trocas nos Capilares',
+    q: 'Quanto sangue o coração bombeia por minuto em repouso e o que é trocado nos capilares?',
+    a: 'Em repouso, o coração bombeia aproximadamente <strong>5 litros de sangue por minuto</strong>. Nos capilares, as trocas ocorrem por meio do <strong>líquido intersticial</strong>:<br>• <strong>Do sangue para os tecidos:</strong> oxigênio e nutrientes (como a <em>glicose</em>).<br>• <strong>Dos tecidos para o sangue:</strong> gás carbônico e resíduos metabólicos.<br>Parte do líquido sai dos capilares e parte retorna; o <strong>excesso é recolhido pelo sistema linfático</strong>. Depois, o sangue volta ao coração pelas veias.',
+    tip: '💡 ~5 L de sangue no corpo e ~5 L/min bombeados em repouso: todo o volume passa pelo coração em cerca de 1 minuto!'
+  },
+  {
+    id: 8, cat: 'sangue', topic: 'Função do Sistema Sanguífero',
+    q: 'Qual a principal função do sistema sanguífero?',
+    a: '<strong>Transportar</strong> oxigênio, nutrientes, hormônios e outras substâncias, além de <strong>recolher gás carbônico e resíduos metabólicos</strong>, contribuindo para a manutenção da <strong>homeostase</strong> do organismo.',
+    tip: '💡 Leva o que a célula precisa (O₂, nutrientes, hormônios) e retira o que ela descarta (CO₂, resíduos).'
+  },
+  {
+    id: 9, cat: 'sangue', topic: 'Sistema Linfático: Composição e Retorno',
+    q: 'Do que é formado o sistema linfático, onde a linfa volta para o sangue e quanto líquido retorna por dia?',
+    a: '• <strong>Formado por:</strong> vasos linfáticos, linfa e órgãos linfoides.<br>• O excesso de líquido intersticial é recolhido pelos <strong>capilares linfáticos</strong> e retorna pelos <strong>vasos linfáticos</strong>, que <strong>desembocam em veias próximas ao coração</strong>.<br>• Diariamente, cerca de <strong>3 litros de líquido</strong> retornam à circulação sanguínea pelo sistema linfático, contribuindo para o equilíbrio dos líquidos corporais.',
+    tip: '💡 Linfático devolve ≈ 3 L/dia. Não confunda com os 5 L de sangue nem com os 5 L/min do coração!'
+  },
+  {
+    id: 10, cat: 'sangue', topic: 'Sistema Linfático: Via Auxiliar',
+    q: 'O que cada sistema transporta (sanguífero × linfático) e por que o linfático é chamado de via auxiliar da circulação?',
+    a: 'O sistema sanguífero transporta <strong>sangue</strong>; o sistema linfático transporta <strong>linfa</strong>. O linfático funciona como uma <strong>via auxiliar da circulação sanguínea</strong>, pois:<br>• <strong>ajuda a evitar o acúmulo de líquidos nos tecidos</strong>;<br>• <strong>participa da defesa do organismo</strong>.',
+    tip: '💡 Sem o linfático, o excesso de líquido que sai dos capilares ficaria acumulado nos tecidos.'
+  },
+  {
+    id: 11, cat: 'sangue', topic: 'Órgãos Linfoides',
+    q: 'Quais são os órgãos linfoides citados na apostila e qual a função dos linfonodos?',
+    a: '• <strong>Órgãos linfoides:</strong> <strong>linfonodos</strong> e <strong>tonsilas (amígdalas)</strong>.<br>• <strong>Linfonodos:</strong> estruturas distribuídas ao longo dos vasos linfáticos que <strong>filtram a linfa</strong> e ajudam a <strong>identificar e combater agentes infecciosos</strong>, contribuindo para a defesa imunológica.',
+    tip: '💡 Tonsilas = amígdalas da garganta. Não confunda com a amígdala do sistema límbico, vista em Neuroanatomia!'
+  },
+  {
+    id: 12, cat: 'sangue', topic: 'Órgãos Hematopoéticos',
+    q: 'O que são os órgãos hematopoéticos, qual é o principal deles e qual o papel do timo e do baço?',
+    a: 'São responsáveis pela <strong>produção das células sanguíneas</strong> e relacionados à formação e ao desenvolvimento das células do sistema imunológico.<br>• <strong>Medula óssea vermelha:</strong> a principal; local da <strong>hematopoiese</strong> (produção de hemácias, leucócitos e plaquetas).<br>• <strong>Timo:</strong> <strong>maturação dos linfócitos T</strong>.<br>• <strong>Baço:</strong> participa da defesa imunológica e <strong>filtra o sangue</strong>, removendo células sanguíneas envelhecidas.',
+    tip: '💡 Pegadinha da apostila: timo e baço NÃO maturam todas as células do sangue. Quem produz todas é a medula óssea vermelha!'
+  },
+
+  // --- BLOCO 2: POSIÇÃO, FORMA, PERICÁRDIO, PAREDES E HISTOLOGIA (11 CARTÕES) ---
+  {
+    id: 13, cat: 'coracao', topic: 'Localização do Coração',
+    q: 'Onde o coração está localizado?',
+    a: 'Na <strong>cavidade torácica</strong>, <strong>entre os pulmões</strong>, <strong>atrás do esterno</strong> e <strong>acima do diafragma</strong> (músculo estriado esquelético que separa as cavidades torácica e abdominal). Fica no <strong>mediastino médio</strong>.',
+    tip: '💡 Coordenadas do coração: entre os pulmões · atrás do esterno · acima do diafragma · mediastino médio.'
+  },
+  {
+    id: 14, cat: 'coracao', topic: 'Mediastino',
+    q: 'O que é o mediastino médio e que outras estruturas o mediastino contém?',
+    a: '• <strong>Mediastino médio:</strong> região central do tórax que contém o <strong>coração</strong>, os <strong>vasos da base</strong> e o <strong>pericárdio</strong>.<br>• O mediastino também contém outras estruturas, como a <strong>traqueia</strong>, o <strong>esôfago</strong> e o <strong>timo</strong> (localizado principalmente na porção <em>superior</em> do mediastino).',
+    tip: '💡 Timo → mediastino superior. Coração + pericárdio + vasos da base → mediastino médio.'
+  },
+  {
+    id: 15, cat: 'coracao', topic: 'Formato e Orientação: Base e Ápice',
+    q: 'Qual é o formato do coração e para onde estão voltados a base e o ápice?',
+    a: 'O coração tem formato semelhante a um <strong>cone truncado</strong>, com uma base e um ápice:<br>• <strong>Base:</strong> voltada para <strong>cima, para trás e para a direita</strong>.<br>• <strong>Ápice:</strong> direcionado para <strong>baixo, para a frente e para a esquerda</strong>.',
+    tip: '💡 São opostos: Base = cima/trás/direita ↔ Ápice = baixo/frente/esquerda.'
+  },
+  {
+    id: 16, cat: 'coracao', topic: 'Faces do Coração',
+    q: 'Quais são as faces do coração e para onde cada uma está voltada?',
+    a: '• <strong>Face esternocostal:</strong> face <em>anterior</em>, voltada para o <strong>esterno</strong>.<br>• <strong>Faces pulmonares direita e esquerda:</strong> voltadas para os <strong>pulmões</strong>.<br>• <strong>Face diafragmática:</strong> face <em>inferior</em>, apoiada sobre o <strong>diafragma</strong>.',
+    tip: '💡 O nome da face diz quem é o vizinho: esterno, pulmões, diafragma.'
+  },
+  {
+    id: 17, cat: 'coracao', topic: 'Dimensões do Coração',
+    q: 'Quais são as dimensões médias do coração adulto?',
+    a: 'Aproximadamente <strong>12 cm de comprimento</strong>, <strong>9 cm de largura</strong> e <strong>6 cm de profundidade</strong>, podendo variar conforme o tamanho corporal e outras características individuais.',
+    tip: '💡 12 × 9 × 6 cm: cada medida diminui 3 cm (12 → 9 → 6)!'
+  },
+  {
+    id: 18, cat: 'coracao', topic: 'Pericárdio: Fibroso × Seroso',
+    q: 'O que é o pericárdio e como se diferenciam o pericárdio fibroso e o pericárdio seroso?',
+    a: 'O <strong>pericárdio</strong> é uma <strong>membrana fibroserosa</strong> que envolve o coração, protegendo-o e ajudando a mantê-lo na posição adequada:<br>• <strong>Pericárdio fibroso:</strong> camada <em>externa</em>, de <strong>tecido conjuntivo denso</strong>; fixa o coração às estruturas próximas e <strong>limita sua distensão excessiva</strong>.<br>• <strong>Pericárdio seroso:</strong> membrana de tecido epitelial e tecido conjuntivo, dividida em <strong>duas lâminas</strong> (parietal e visceral).',
+    tip: '💡 Fibroso = fixa e segura (não deixa o coração distender demais). Seroso = duas lâminas que deslizam.'
+  },
+  {
+    id: 19, cat: 'coracao', topic: 'Pericárdio Seroso e Cavidade Pericárdica',
+    q: 'Quais são as lâminas do pericárdio seroso, o que existe entre elas e para que serve?',
+    a: '• <strong>Lâmina parietal:</strong> reveste internamente o pericárdio fibroso.<br>• <strong>Lâmina visceral:</strong> adere diretamente à superfície do coração e também é chamada de <strong>epicárdio</strong>.<br>• Entre elas fica a <strong>cavidade pericárdica</strong>, com uma pequena quantidade de <strong>líquido pericárdico</strong>, que <strong>lubrifica as superfícies e reduz o atrito</strong> durante os movimentos do coração.',
+    tip: '💡 Parietal = parede (cola no fibroso). Visceral = víscera (cola no coração) = Epicárdio!'
+  },
+  {
+    id: 20, cat: 'coracao', topic: 'Camadas da Parede do Coração',
+    q: 'Quais são as três camadas da parede do coração, de fora para dentro?',
+    a: '1. <strong>Epicárdio:</strong> camada mais <em>externa</em>; corresponde à <strong>lâmina visceral do pericárdio seroso</strong> e reveste externamente o coração.<br>2. <strong>Miocárdio:</strong> camada <em>intermediária</em>, de <strong>músculo estriado cardíaco</strong>; responsável pela <strong>contração e pelo bombeamento do sangue</strong>.<br>3. <strong>Endocárdio:</strong> camada mais <em>interna</em>, de tecido endotelial e conjuntivo; <strong>reveste as cavidades cardíacas e as válvulas</strong>.',
+    tip: '💡 EPI (por fora) → MIO (músculo) → ENDO (por dentro). Mesma lógica de prefixos do Epineuro → Endoneuro da Neuro!'
+  },
+  {
+    id: 21, cat: 'coracao', topic: 'Miocárdio e Sarcômeros',
+    q: 'Qual camada é responsável pela contração do coração e que estrutura de suas células permite essa contração?',
+    a: 'O <strong>miocárdio</strong>, formado por <strong>músculo estriado cardíaco</strong>. Suas células possuem <strong>sarcômeros</strong>, as unidades funcionais responsáveis pela <strong>contração muscular</strong>. Os sarcômeros têm <strong>bandas claras e escuras</strong>, que dão ao tecido sua <strong>aparência estriada</strong>.',
+    tip: '💡 Estriado = listrado, por causa das bandas claras e escuras dos sarcômeros.'
+  },
+  {
+    id: 22, cat: 'coracao', topic: 'Ventrículo Direito × Ventrículo Esquerdo',
+    q: 'Por que a parede do ventrículo esquerdo é mais espessa que a do ventrículo direito?',
+    a: '• <strong>Ventrículo direito:</strong> parede muscular <strong>menos espessa</strong>, pois bombeia o sangue <strong>apenas para os pulmões</strong>, onde a pressão necessária é menor.<br>• <strong>Ventrículo esquerdo:</strong> parede muscular <strong>mais espessa</strong>, pois bombeia o sangue <strong>para todo o corpo</strong>, precisando gerar <strong>maior pressão</strong>.',
+    tip: '💡 Esquerdo = mais trabalho (corpo todo) = mais músculo.'
+  },
+  {
+    id: 23, cat: 'coracao', topic: 'Células Cardíacas e Discos Intercalares',
+    q: 'Como são as células musculares cardíacas e qual a função dos discos intercalares?',
+    a: 'As células musculares cardíacas são geralmente <strong>curtas</strong>, <strong>ramificadas</strong> e possuem <strong>um núcleo central</strong> (podendo apresentar dois).<br>Elas se conectam pelos <strong>discos intercalares</strong>, que permitem a <strong>adesão entre as células</strong> e a <strong>transmissão rápida de sinais elétricos</strong>, possibilitando a <strong>contração coordenada</strong> do coração.',
+    tip: '💡 Discos intercalares = "cola" + "fio elétrico" entre as células → o coração contrai como uma unidade.'
+  },
+
+  // --- BLOCO 3: ANATOMIA EXTERNA, SEPTOS E CÂMARAS (8 CARTÕES) ---
+  {
+    id: 24, cat: 'externa', topic: 'Sulco Coronário',
+    q: 'O que o sulco coronário separa e o que passa por ele?',
+    a: 'O <strong>sulco coronário</strong> separa externamente os <strong>átrios</strong> (na parte superior) dos <strong>ventrículos</strong> (na parte inferior). Nele passam <strong>vasos sanguíneos que irrigam o coração</strong>.',
+    tip: '💡 Sulco coronário = linha átrios × ventrículos, por onde passam os vasos do próprio coração.'
+  },
+  {
+    id: 25, cat: 'externa', topic: 'Sulcos Interventriculares e Interatrial',
+    q: 'O que marcam externamente os sulcos interventricular anterior, interventricular posterior e interatrial?',
+    a: '• <strong>Sulco interventricular anterior:</strong> separação entre os ventrículos direito e esquerdo na <strong>face anterior</strong>.<br>• <strong>Sulco interventricular posterior:</strong> separação entre os ventrículos direito e esquerdo na <strong>face posterior</strong>.<br>• <strong>Sulco interatrial:</strong> separação entre os <strong>átrios direito e esquerdo</strong>.',
+    tip: '💡 Sulco = marca EXTERNA. A parede interna correspondente é o septo.'
+  },
+  {
+    id: 26, cat: 'externa', topic: 'Septos do Coração',
+    q: 'Quais são os septos do coração e o que cada um separa?',
+    a: 'Septos são <strong>paredes internas</strong> que separam as cavidades:<br>• <strong>Septo interatrial:</strong> átrio direito × átrio esquerdo.<br>• <strong>Septo interventricular:</strong> ventrículo direito × ventrículo esquerdo.<br>• <strong>Septo atrioventricular:</strong> separa os <strong>átrios dos ventrículos</strong> e é atravessado pelos <strong>orifícios atrioventriculares</strong>, onde ficam as valvas <strong>tricúspide e mitral</strong>.',
+    tip: '💡 Sulco = por fora. Septo = por dentro.'
+  },
+  {
+    id: 27, cat: 'externa', topic: 'As 4 Câmaras do Coração',
+    q: 'Quantas câmaras o coração possui e qual a diferença de função entre átrios e ventrículos?',
+    a: 'São <strong>quatro câmaras</strong>: <strong>dois átrios</strong> e <strong>dois ventrículos</strong>.<br>• <strong>Átrios:</strong> <strong>recebem</strong> o sangue.<br>• <strong>Ventrículos:</strong> <strong>bombeiam</strong> o sangue para fora do coração.',
+    tip: '💡 Átrio = Acolhe (recebe). Ventrículo = Vai embora (bombeia para fora).'
+  },
+  {
+    id: 28, cat: 'externa', topic: 'Átrios: o que cada um recebe',
+    q: 'Que tipo de sangue o átrio direito e o átrio esquerdo recebem, e por quais vasos?',
+    a: '• <strong>Átrio direito:</strong> recebe sangue <strong>pobre em oxigênio</strong> do corpo pelas <strong>veias cavas superior e inferior</strong> e também o sangue venoso do próprio coração pelo <strong>seio coronário</strong>.<br>• <strong>Átrio esquerdo:</strong> recebe sangue <strong>rico em oxigênio</strong> dos pulmões pelas <strong>quatro veias pulmonares</strong>.',
+    tip: '💡 Lado direito = sangue pobre em O₂. Lado esquerdo = sangue rico em O₂. Atenção: as veias pulmonares trazem sangue RICO em O₂!'
+  },
+  {
+    id: 29, cat: 'externa', topic: 'Ventrículos: para onde cada um bombeia',
+    q: 'Para onde o ventrículo direito e o ventrículo esquerdo bombeiam o sangue, e por qual vaso?',
+    a: '• <strong>Ventrículo direito:</strong> bombeia sangue <strong>pobre em oxigênio</strong> para os <strong>pulmões</strong> pelo <strong>tronco pulmonar</strong>, onde ocorrerá a oxigenação.<br>• <strong>Ventrículo esquerdo:</strong> bombeia sangue <strong>rico em oxigênio</strong> para <strong>todo o corpo</strong> pela <strong>artéria aorta</strong>.',
+    tip: '💡 VD → Tronco pulmonar → Pulmões. VE → Aorta → Corpo todo.'
+  },
+  {
+    id: 30, cat: 'externa', topic: 'Veias Cavas Superior e Inferior',
+    q: 'De quais regiões as veias cavas superior e inferior trazem o sangue, e onde desembocam?',
+    a: '• <strong>Veia cava superior:</strong> traz o sangue da região <strong>acima do diafragma</strong> (cabeça, pescoço e membros superiores).<br>• <strong>Veia cava inferior:</strong> traz o sangue da região <strong>abaixo do diafragma</strong> (abdome, pelve e membros inferiores).<br>• <strong>Ambas desembocam no átrio direito</strong>.',
+    tip: '💡 O diafragma é a linha divisória: acima → cava superior; abaixo → cava inferior.'
+  },
+  {
+    id: 31, cat: 'externa', topic: 'Seio Coronário',
+    q: 'O que é o seio coronário e para onde ele leva o sangue?',
+    a: 'O <strong>seio coronário</strong> recolhe o <strong>sangue venoso da circulação do próprio coração</strong> (do músculo cardíaco) e o conduz ao <strong>átrio direito</strong> por meio de sua abertura.',
+    tip: '💡 O átrio direito tem 3 entradas: veia cava superior + veia cava inferior + seio coronário.'
+  },
+
+  // --- BLOCO 4: VALVAS, CORONÁRIAS E CICLO CARDÍACO (10 CARTÕES) ---
+  {
+    id: 32, cat: 'valvas', topic: 'Valvas Cardíacas: Função',
+    q: 'Do que são formadas as valvas cardíacas, qual a sua função e quantas existem?',
+    a: 'São formadas por <strong>tecido conjuntivo</strong> e garantem que o sangue siga em <strong>um único sentido</strong>, <strong>impedindo seu refluxo</strong>. Existem <strong>quatro valvas</strong>: duas <strong>atrioventriculares</strong> (tricúspide e mitral) e duas <strong>semilunares</strong> (pulmonar e aórtica).',
+    tip: '💡 4 valvas = 2 AV (entre átrio e ventrículo) + 2 semilunares (na saída dos ventrículos).'
+  },
+  {
+    id: 33, cat: 'valvas', topic: 'Valvas Atrioventriculares: Tricúspide e Mitral',
+    q: 'Onde ficam as valvas tricúspide e mitral e quantas cúspides cada uma possui?',
+    a: '• <strong>Tricúspide (direita):</strong> entre o <strong>átrio direito</strong> e o <strong>ventrículo direito</strong>; possui <strong>três cúspides</strong>.<br>• <strong>Mitral ou bicúspide (esquerda):</strong> entre o <strong>átrio esquerdo</strong> e o <strong>ventrículo esquerdo</strong>; possui <strong>duas cúspides</strong>.',
+    tip: '💡 Tricúspide = 3 cúspides = lado direito. Mitral = Bicúspide (sinônimos!) = 2 cúspides = lado esquerdo.'
+  },
+  {
+    id: 34, cat: 'valvas', topic: 'Cordas Tendíneas e Músculos Papilares',
+    q: 'Qual a função das cordas tendíneas e dos músculos papilares nas valvas atrioventriculares?',
+    a: 'As valvas tricúspide e mitral possuem <strong>cordas tendíneas</strong> ligadas aos <strong>músculos papilares</strong>, que <strong>impedem a inversão das cúspides</strong> durante a <strong>contração ventricular</strong>.',
+    tip: '💡 As cordas tendíneas funcionam como cordas de paraquedas: seguram as cúspides para que não virem para dentro do átrio.'
+  },
+  {
+    id: 35, cat: 'valvas', topic: 'Valvas Semilunares: Pulmonar e Aórtica',
+    q: 'Onde ficam as valvas semilunares, quantas cúspides elas têm e como funcionam?',
+    a: '• <strong>Pulmonar:</strong> entre o <strong>ventrículo direito</strong> e o <strong>tronco pulmonar</strong>.<br>• <strong>Aórtica:</strong> entre o <strong>ventrículo esquerdo</strong> e a <strong>aorta</strong>.<br>Possuem <strong>três cúspides em formato de pequenos bolsos</strong>. <strong>Abrem-se</strong> para permitir a saída do sangue dos ventrículos e <strong>fecham-se</strong> para impedir seu retorno.',
+    tip: '💡 Semilunar = meia-lua (bolsinhos). Ficam na SAÍDA dos ventrículos.'
+  },
+  {
+    id: 36, cat: 'valvas', topic: 'Artérias Coronárias',
+    q: 'De onde se originam as artérias coronárias e o que elas irrigam?',
+    a: 'As <strong>artérias coronárias direita e esquerda</strong> são os <strong>primeiros ramos da aorta ascendente</strong> e levam <strong>sangue oxigenado ao músculo cardíaco (miocárdio)</strong>.',
+    tip: '💡 O coração se "alimenta" primeiro: as coronárias são os primeiros ramos da aorta!'
+  },
+  {
+    id: 37, cat: 'valvas', topic: 'Irrigação do Coração na Diástole',
+    q: 'Por que a irrigação do coração ocorre principalmente durante a diástole?',
+    a: 'Quando a <strong>valva aórtica se fecha</strong>, o sangue preenche os <strong>seios da aorta</strong>, favorecendo sua entrada nos <strong>óstios coronários</strong> (aberturas das artérias coronárias). Por isso a irrigação do coração ocorre principalmente na <strong>diástole</strong>, quando os <strong>ventrículos relaxam</strong>.',
+    tip: '💡 Valva aórtica fecha → sangue enche os seios da aorta → entra nos óstios coronários → miocárdio irrigado (na diástole).'
+  },
+  {
+    id: 38, cat: 'valvas', topic: 'Ciclo Cardíaco: Sístole × Diástole',
+    q: 'O que é o ciclo cardíaco e qual a diferença entre sístole e diástole?',
+    a: 'O <strong>ciclo cardíaco</strong> é o conjunto de acontecimentos que ocorre no coração <strong>entre um batimento e outro</strong>, envolvendo a contração e o relaxamento dos átrios e ventrículos.<br>• <strong>Sístole:</strong> fase de <strong>contração</strong>, que impulsiona o sangue para fora das cavidades cardíacas.<br>• <strong>Diástole:</strong> fase de <strong>relaxamento</strong>, que permite o <strong>enchimento</strong> das cavidades com sangue.',
+    tip: '💡 Sístole = Sai (contrai e expulsa). Diástole = Descansa e enche (relaxa).'
+  },
+  {
+    id: 39, cat: 'valvas', topic: 'Sons do Coração: "Tum" e "Tá"',
+    q: 'O que produz o 1º som ("tum") e o 2º som ("tá") do coração?',
+    a: '• <strong>Tum (1º som):</strong> <strong>fechamento das valvas atrioventriculares</strong> (tricúspide e mitral), no <strong>início da sístole ventricular</strong>. Impede o retorno do sangue para os átrios.<br>• <strong>Tá (2º som):</strong> <strong>fechamento das valvas semilunares</strong> (aórtica e pulmonar), no <strong>início da diástole ventricular</strong>. Impede o retorno do sangue das artérias para os ventrículos.',
+    tip: '💡 Os sons vêm do FECHAMENTO das valvas: Tum = AV fecham (começa a sístole). Tá = semilunares fecham (começa a diástole).'
+  },
+  {
+    id: 40, cat: 'valvas', topic: 'Sístole Ventricular Passo a Passo',
+    q: 'O que acontece na sístole ventricular com a pressão, o sangue e as valvas?',
+    a: 'Os <strong>ventrículos se contraem</strong>, a <strong>pressão aumenta</strong> e o sangue é impulsionado para a <strong>aorta</strong> e o <strong>tronco pulmonar</strong>.<br>• <strong>Valvas atrioventriculares:</strong> ficam <strong>fechadas</strong>.<br>• <strong>Valvas semilunares:</strong> <strong>se abrem</strong>.',
+    tip: '💡 Na sístole: AV fechadas 🔒 + semilunares abertas 🔓 → o sangue sai para as artérias.'
+  },
+  {
+    id: 41, cat: 'valvas', topic: 'Diástole Ventricular Passo a Passo',
+    q: 'O que acontece na diástole ventricular e quando as valvas atrioventriculares se abrem?',
+    a: 'Os <strong>ventrículos relaxam</strong> e a <strong>pressão diminui</strong>; as <strong>valvas semilunares se fecham</strong>, produzindo o som <strong>"tá"</strong>. Quando a <strong>pressão ventricular fica menor que a atrial</strong>, as <strong>valvas atrioventriculares se abrem</strong>, permitindo a entrada de sangue nos ventrículos.',
+    tip: '💡 Na diástole: semilunares fechadas 🔒 + AV abertas 🔓 → os ventrículos enchem. É o espelho da sístole!'
+  }
+];
+
+/* ==========================================================================
+   DATABASE: 20 EXAM QUESTIONS (SIMULADO AVALIATIVO)
+   ========================================================================== */
+const SIMULADO_QUESTIONS = [
+  {
+    cat: 'Sangue & Linfa',
+    q: '1. Sobre a composição do sangue, assinale a alternativa CORRETA:',
+    opts: [
+      'O sangue é um tecido epitelial formado apenas por hemácias e plaquetas.',
+      'O plasma corresponde a cerca de 90% do volume sanguíneo e é formado exclusivamente por proteínas.',
+      'O sangue é um tecido conjuntivo líquido formado por plasma (cerca de 55% do volume) e elementos figurados: eritrócitos (hemácias), leucócitos e plaquetas.',
+      'Os leucócitos são responsáveis pela coagulação e as plaquetas pela defesa do organismo.'
+    ],
+    ans: 2,
+    exp: 'O sangue é um tecido conjuntivo líquido. O plasma (≈ 55% do volume) é composto principalmente por água, além de proteínas, sais minerais, hormônios e lipídios. Elementos figurados: hemácias (transporte de O₂ e cor vermelha), leucócitos (defesa) e plaquetas (coagulação).'
+  },
+  {
+    cat: 'Sangue & Linfa',
+    q: '2. A respeito do líquido intersticial e da linfa, é CORRETO afirmar que:',
+    opts: [
+      'O líquido intersticial ocupa os espaços entre as células e permite as trocas entre o sangue e os tecidos; quando parte dele entra nos capilares linfáticos, forma a linfa.',
+      'A linfa é produzida pela medula óssea vermelha e circula dentro das artérias.',
+      'O líquido intersticial é um líquido intracelular que fica dentro das hemácias.',
+      'A linfa leva o excesso de líquido do sangue para os tecidos, provocando o acúmulo de líquidos.'
+    ],
+    ans: 0,
+    exp: 'O líquido intersticial é extracelular e fica entre as células, sendo o meio das trocas entre sangue e tecidos. A linfa se forma quando parte desse líquido entra nos capilares linfáticos; ela devolve ao sangue o excesso de líquido dos tecidos e participa da defesa imunológica.'
+  },
+  {
+    cat: 'Sangue & Linfa',
+    q: '3. Sobre o sistema sanguífero, assinale a alternativa CORRETA:',
+    opts: [
+      'As veias levam o sangue do coração para os tecidos e as artérias o trazem de volta.',
+      'A circulação sanguínea é um sistema aberto, pois o sangue sai dos vasos e circula livremente entre as células.',
+      'Em repouso, o coração bombeia aproximadamente 3 litros de sangue por hora.',
+      'É formado pelo coração (uma bomba contrátil) e pelos vasos sanguíneos: as artérias levam o sangue aos tecidos, os capilares permitem as trocas e as veias devolvem o sangue ao coração, em um sistema fechado.'
+    ],
+    ans: 3,
+    exp: 'O sistema sanguífero é fechado: o sangue permanece dentro dos vasos. O coração é a bomba contrátil; artérias levam o sangue aos tecidos, capilares fazem as trocas e veias trazem o sangue de volta. Em repouso, o coração bombeia ≈ 5 litros por minuto.'
+  },
+  {
+    cat: 'Sangue & Linfa',
+    q: '4. Nas trocas que ocorrem nos capilares sanguíneos, o que passa do sangue para os tecidos e o que passa dos tecidos para o sangue?',
+    opts: [
+      'Do sangue para os tecidos: gás carbônico e resíduos; dos tecidos para o sangue: oxigênio e glicose.',
+      'Do sangue para os tecidos: oxigênio e nutrientes (como a glicose); dos tecidos para o sangue: gás carbônico e resíduos metabólicos.',
+      'Apenas plaquetas passam do sangue para os tecidos, e nada retorna ao sangue.',
+      'Do sangue para os tecidos: linfa; dos tecidos para o sangue: plasma.'
+    ],
+    ans: 1,
+    exp: 'Nos capilares, por meio do líquido intersticial, oxigênio e nutrientes (como a glicose) passam para os tecidos, enquanto gás carbônico e resíduos metabólicos passam para o sangue. O excesso de líquido é recolhido pelo sistema linfático.'
+  },
+  {
+    cat: 'Sangue & Linfa',
+    q: '5. Sobre o sistema linfático e os órgãos hematopoéticos, assinale a alternativa CORRETA:',
+    opts: [
+      'O sistema linfático é fechado, e seus vasos desembocam diretamente no ventrículo esquerdo.',
+      'O timo e o baço são os responsáveis pela maturação de todas as células do sangue.',
+      'O sistema linfático é aberto e devolve cerca de 3 litros de líquido por dia ao sangue, por vasos que desembocam em veias próximas ao coração; já a hematopoiese ocorre principalmente na medula óssea vermelha.',
+      'Os linfonodos produzem hemácias e as tonsilas produzem plaquetas.'
+    ],
+    ans: 2,
+    exp: 'O linfático é aberto (começa nos tecidos) e devolve ≈ 3 L/dia ao sangue por vasos que desembocam em veias próximas ao coração. A medula óssea vermelha é o principal órgão hematopoético (hemácias, leucócitos e plaquetas). O timo matura os linfócitos T e o baço filtra o sangue: eles não maturam todas as células. Os linfonodos filtram a linfa.'
+  },
+  {
+    cat: 'Posição & Paredes',
+    q: '6. Sobre a localização do coração, assinale a alternativa CORRETA:',
+    opts: [
+      'Localiza-se na cavidade abdominal, abaixo do diafragma e à frente do esterno.',
+      'Localiza-se na cavidade torácica, entre os pulmões, atrás do esterno e acima do diafragma, no mediastino médio.',
+      'Localiza-se na porção superior do mediastino, dentro do pulmão esquerdo.',
+      'Localiza-se abaixo do diafragma, apoiado sobre o fígado, com o ápice voltado para a direita.'
+    ],
+    ans: 1,
+    exp: 'O coração fica na cavidade torácica, entre os pulmões, atrás do esterno e acima do diafragma, no mediastino médio: a região central do tórax que contém o coração, os vasos da base e o pericárdio. Quem fica principalmente na porção superior do mediastino é o timo.'
+  },
+  {
+    cat: 'Posição & Paredes',
+    q: '7. O coração tem formato semelhante a um cone truncado. Assinale a orientação CORRETA da base e do ápice:',
+    opts: [
+      'Base para baixo, para a frente e para a esquerda; ápice para cima, para trás e para a direita.',
+      'Base e ápice voltados para a direita.',
+      'Base voltada para o diafragma e ápice voltado para o pescoço.',
+      'Base voltada para cima, para trás e para a direita; ápice voltado para baixo, para a frente e para a esquerda.'
+    ],
+    ans: 3,
+    exp: 'A base está voltada para cima, para trás e para a direita; o ápice, para baixo, para a frente e para a esquerda. São orientações opostas.'
+  },
+  {
+    cat: 'Posição & Paredes',
+    q: '8. Assinale a alternativa que descreve CORRETAMENTE as faces do coração e suas dimensões médias no adulto:',
+    opts: [
+      'Face esternocostal (anterior, voltada para o esterno), faces pulmonares direita e esquerda e face diafragmática (inferior); cerca de 12 cm de comprimento, 9 cm de largura e 6 cm de profundidade.',
+      'Face diafragmática (anterior, voltada para o esterno) e face esternocostal (inferior); cerca de 20 cm de comprimento.',
+      'O coração possui apenas uma face, a pulmonar; mede cerca de 6 cm de comprimento e 12 cm de profundidade.',
+      'Face esternocostal (posterior, voltada para a coluna); cerca de 30 cm de comprimento.'
+    ],
+    ans: 0,
+    exp: 'Faces: esternocostal (anterior, voltada para o esterno), pulmonares direita e esquerda (voltadas para os pulmões) e diafragmática (inferior, apoiada sobre o diafragma). Dimensões médias: 12 × 9 × 6 cm.'
+  },
+  {
+    cat: 'Posição & Paredes',
+    q: '9. Sobre o pericárdio, assinale a alternativa CORRETA:',
+    opts: [
+      'O pericárdio fibroso é a camada mais interna e adere diretamente ao miocárdio.',
+      'A cavidade pericárdica fica entre o pericárdio fibroso e o esterno e é preenchida por sangue.',
+      'O pericárdio fibroso (externo, de tecido conjuntivo denso) fixa o coração e limita sua distensão; o pericárdio seroso tem uma lâmina parietal e uma visceral (epicárdio), e entre elas fica a cavidade pericárdica, com líquido que reduz o atrito.',
+      'O pericárdio seroso é formado por músculo estriado cardíaco e é responsável pela contração.'
+    ],
+    ans: 2,
+    exp: 'Pericárdio fibroso = externo, tecido conjuntivo denso, fixa o coração e limita a distensão excessiva. Pericárdio seroso = lâmina parietal (reveste o fibroso por dentro) + lâmina visceral (adere ao coração = epicárdio). Entre elas fica a cavidade pericárdica, com líquido pericárdico lubrificante.'
+  },
+  {
+    cat: 'Posição & Paredes',
+    q: '10. Sobre as camadas da parede do coração e sua histologia, assinale a alternativa CORRETA:',
+    opts: [
+      'O endocárdio é a camada mais externa e corresponde à lâmina parietal do pericárdio seroso.',
+      'O miocárdio é a camada intermediária, de músculo estriado cardíaco; suas células são curtas, ramificadas, com núcleo central, e se unem por discos intercalares que permitem a transmissão rápida de sinais elétricos e a contração coordenada.',
+      'O ventrículo direito tem a parede mais espessa porque bombeia sangue para todo o corpo.',
+      'As células musculares cardíacas são longas, sem ramificações e com vários núcleos periféricos, unidas por sarcômeros.'
+    ],
+    ans: 1,
+    exp: 'Epicárdio (externo, = lâmina visceral) → Miocárdio (músculo estriado cardíaco, contração) → Endocárdio (interno, reveste cavidades e valvas). As células cardíacas são curtas, ramificadas, com um núcleo central (às vezes dois) e unidas por discos intercalares. O ventrículo esquerdo é mais espesso que o direito por bombear para todo o corpo.'
+  },
+  {
+    cat: 'Câmaras & Sulcos',
+    q: '11. Sobre os sulcos externos do coração, assinale a alternativa CORRETA:',
+    opts: [
+      'O sulco interatrial separa os átrios dos ventrículos.',
+      'O sulco interventricular anterior separa o átrio direito do ventrículo direito.',
+      'O sulco coronário separa os ventrículos direito e esquerdo na face posterior.',
+      'O sulco coronário separa externamente os átrios (superiores) dos ventrículos (inferiores), e por ele passam vasos que irrigam o coração.'
+    ],
+    ans: 3,
+    exp: 'Sulco coronário: átrios × ventrículos (com os vasos que irrigam o coração). Sulcos interventriculares anterior e posterior: ventrículo direito × esquerdo nas faces anterior e posterior. Sulco interatrial: átrio direito × átrio esquerdo.'
+  },
+  {
+    cat: 'Câmaras & Sulcos',
+    q: '12. Qual estrutura separa internamente os átrios dos ventrículos e é atravessada pelos orifícios atrioventriculares, onde ficam as valvas tricúspide e mitral?',
+    opts: [
+      'Septo atrioventricular.',
+      'Septo interatrial.',
+      'Septo interventricular.',
+      'Sulco coronário.'
+    ],
+    ans: 0,
+    exp: 'O septo atrioventricular corresponde à região que separa os átrios dos ventrículos e é atravessado pelos orifícios atrioventriculares, onde ficam as valvas tricúspide e mitral. Lembre: sulco é marca externa; septo é parede interna.'
+  },
+  {
+    cat: 'Câmaras & Sulcos',
+    q: '13. Sobre as câmaras do coração e o sangue que elas recebem, assinale a alternativa CORRETA:',
+    opts: [
+      'O átrio esquerdo recebe sangue pobre em oxigênio pelas veias cavas.',
+      'Os ventrículos recebem o sangue e os átrios o bombeiam para fora do coração.',
+      'O átrio direito recebe sangue pobre em oxigênio pelas veias cavas superior e inferior e pelo seio coronário; o átrio esquerdo recebe sangue rico em oxigênio pelas quatro veias pulmonares.',
+      'O átrio direito recebe sangue rico em oxigênio pelas quatro veias pulmonares.'
+    ],
+    ans: 2,
+    exp: 'Átrios recebem, ventrículos bombeiam. Átrio direito: sangue pobre em O₂ das veias cavas + sangue venoso do próprio coração (seio coronário). Átrio esquerdo: sangue rico em O₂ vindo dos pulmões pelas 4 veias pulmonares.'
+  },
+  {
+    cat: 'Câmaras & Sulcos',
+    q: '14. Para onde bombeiam o ventrículo direito e o ventrículo esquerdo, respectivamente?',
+    opts: [
+      'Ventrículo direito → aorta → corpo; ventrículo esquerdo → tronco pulmonar → pulmões.',
+      'Ventrículo direito → tronco pulmonar → pulmões (sangue pobre em O₂); ventrículo esquerdo → artéria aorta → todo o corpo (sangue rico em O₂).',
+      'Ambos bombeiam o sangue para as veias cavas.',
+      'Ventrículo direito → seio coronário; ventrículo esquerdo → veias pulmonares.'
+    ],
+    ans: 1,
+    exp: 'O ventrículo direito bombeia sangue pobre em oxigênio pelo tronco pulmonar até os pulmões, onde ocorre a oxigenação. O ventrículo esquerdo bombeia sangue rico em oxigênio pela aorta para todo o corpo.'
+  },
+  {
+    cat: 'Câmaras & Sulcos',
+    q: '15. Sobre as veias cavas e o seio coronário, assinale a alternativa CORRETA:',
+    opts: [
+      'A veia cava superior traz sangue do abdome, da pelve e dos membros inferiores.',
+      'As veias cavas desembocam no átrio esquerdo.',
+      'O seio coronário leva sangue oxigenado da aorta para o miocárdio.',
+      'A veia cava superior drena a região acima do diafragma e a inferior, a região abaixo dele; ambas desembocam no átrio direito, assim como o seio coronário, que recolhe o sangue venoso do próprio coração.'
+    ],
+    ans: 3,
+    exp: 'Cava superior: acima do diafragma (cabeça, pescoço, membros superiores). Cava inferior: abaixo do diafragma (abdome, pelve, membros inferiores). Ambas chegam ao átrio direito, que também recebe o seio coronário (sangue venoso do músculo cardíaco). Quem leva sangue oxigenado ao miocárdio são as artérias coronárias.'
+  },
+  {
+    cat: 'Valvas & Ciclo',
+    q: '16. Sobre as valvas atrioventriculares, assinale a alternativa CORRETA:',
+    opts: [
+      'A tricúspide fica entre o átrio e o ventrículo direitos (3 cúspides) e a mitral/bicúspide entre o átrio e o ventrículo esquerdos (2 cúspides); ambas têm cordas tendíneas ligadas aos músculos papilares, que impedem a inversão das cúspides na contração ventricular.',
+      'A mitral fica do lado direito do coração e possui três cúspides.',
+      'As cordas tendíneas ligam as valvas semilunares à aorta.',
+      'As valvas atrioventriculares são formadas por músculo estriado cardíaco.'
+    ],
+    ans: 0,
+    exp: 'Tricúspide = direita, 3 cúspides. Mitral = bicúspide = esquerda, 2 cúspides. As cordas tendíneas, presas aos músculos papilares, impedem que as cúspides se invertam durante a contração ventricular. As valvas são formadas por tecido conjuntivo.'
+  },
+  {
+    cat: 'Valvas & Ciclo',
+    q: '17. Sobre as valvas semilunares, assinale a alternativa CORRETA:',
+    opts: [
+      'Ficam entre os átrios e os ventrículos e possuem duas cúspides.',
+      'A valva pulmonar fica entre o ventrículo esquerdo e a aorta.',
+      'A pulmonar fica entre o ventrículo direito e o tronco pulmonar, e a aórtica entre o ventrículo esquerdo e a aorta; ambas têm três cúspides em formato de bolso, que se abrem para a saída do sangue e se fecham para impedir seu retorno.',
+      'Permanecem abertas durante todo o ciclo cardíaco.'
+    ],
+    ans: 2,
+    exp: 'Valvas semilunares: pulmonar (ventrículo direito → tronco pulmonar) e aórtica (ventrículo esquerdo → aorta), com três cúspides em formato de pequenos bolsos. Abrem-se para o sangue sair dos ventrículos e fecham-se para impedir o retorno.'
+  },
+  {
+    cat: 'Valvas & Ciclo',
+    q: '18. Sobre a irrigação do próprio coração, assinale a alternativa CORRETA:',
+    opts: [
+      'As artérias coronárias são ramos das veias cavas e levam sangue pobre em oxigênio ao miocárdio.',
+      'As artérias coronárias direita e esquerda são os primeiros ramos da aorta ascendente; quando a valva aórtica se fecha, o sangue enche os seios da aorta e entra nos óstios coronários, por isso a irrigação ocorre principalmente na diástole.',
+      'A irrigação do coração ocorre principalmente durante a sístole, enquanto a valva aórtica está aberta.',
+      'O miocárdio é irrigado pelo seio coronário, que traz sangue oxigenado dos pulmões.'
+    ],
+    ans: 1,
+    exp: 'As coronárias (direita e esquerda) são os primeiros ramos da aorta ascendente e levam sangue oxigenado ao miocárdio. Com o fechamento da valva aórtica, o sangue preenche os seios da aorta e entra nos óstios coronários; por isso a irrigação ocorre principalmente na diástole. O seio coronário faz o contrário: recolhe o sangue venoso do coração.'
+  },
+  {
+    cat: 'Valvas & Ciclo',
+    q: '19. Sobre os sons do coração, assinale a alternativa CORRETA:',
+    opts: [
+      'O "tum" é produzido pela abertura das valvas semilunares.',
+      'O "tá" é produzido pelo fechamento das valvas tricúspide e mitral, no início da sístole.',
+      'Os dois sons são produzidos pela abertura das valvas atrioventriculares.',
+      'O "tum" (1º som) é o fechamento das valvas atrioventriculares no início da sístole ventricular; o "tá" (2º som) é o fechamento das valvas semilunares no início da diástole ventricular.'
+    ],
+    ans: 3,
+    exp: 'Os sons vêm do FECHAMENTO das valvas. Tum (1º): tricúspide e mitral fecham no início da sístole ventricular, impedindo o retorno do sangue aos átrios. Tá (2º): aórtica e pulmonar fecham no início da diástole ventricular, impedindo o retorno do sangue das artérias para os ventrículos.'
+  },
+  {
+    cat: 'Valvas & Ciclo',
+    q: '20. Sobre o ciclo cardíaco, assinale a alternativa CORRETA:',
+    opts: [
+      'Na sístole ventricular, os ventrículos se contraem, a pressão aumenta, as valvas AV ficam fechadas e as semilunares se abrem; na diástole ventricular, os ventrículos relaxam, as semilunares se fecham e, quando a pressão ventricular fica menor que a atrial, as valvas AV se abrem para o enchimento.',
+      'Sístole é a fase de relaxamento e diástole é a fase de contração.',
+      'Na sístole ventricular, as valvas atrioventriculares se abrem e as semilunares ficam fechadas.',
+      'Na diástole ventricular, a pressão nos ventrículos aumenta e o sangue é impulsionado para a aorta.'
+    ],
+    ans: 0,
+    exp: 'Sístole = contração (o sangue sai): AV fechadas e semilunares abertas, com o sangue indo para a aorta e o tronco pulmonar. Diástole = relaxamento (enchimento): as semilunares fecham ("tá") e, quando a pressão ventricular cai abaixo da atrial, as AV se abrem e o sangue entra nos ventrículos.'
+  }
+];
+
+/* ==========================================================================
+   ENGINE: FLASHCARDS, FILTROS DE DIFICULDADE, RESUMO E SIMULADO
+   ========================================================================== */
+(() => {
+  // Dificuldade padrão baseada na complexidade de cada tema (1..41)
+  const DEFAULT_DIFF = {
+    // 1-12: Sangue, Líquidos & Sistemas Sanguífero e Linfático
+    1:'facil', 2:'facil', 3:'facil', 4:'medio', 5:'facil', 6:'medio',
+    7:'medio', 8:'facil', 9:'medio', 10:'medio', 11:'facil', 12:'dificil',
+    // 13-23: Posição, Pericárdio, Paredes & Histologia
+    13:'facil', 14:'medio', 15:'medio', 16:'facil', 17:'facil', 18:'medio',
+    19:'dificil', 20:'facil', 21:'medio', 22:'medio', 23:'medio',
+    // 24-31: Sulcos, Septos & Câmaras
+    24:'facil', 25:'medio', 26:'medio', 27:'facil', 28:'dificil', 29:'medio', 30:'facil', 31:'medio',
+    // 32-41: Valvas, Coronárias & Ciclo Cardíaco
+    32:'facil', 33:'facil', 34:'medio', 35:'medio', 36:'medio', 37:'dificil',
+    38:'facil', 39:'dificil', 40:'dificil', 41:'dificil'
+  };
+
+  // Enriquecer cards com dificuldade padrão
+  FLASHCARDS.forEach(c => {
+    c.defaultDiff = DEFAULT_DIFF[c.id] || 'medio';
+  });
+
+  const STORAGE_KEY = 'germano_circ_state_v1';
+  const EXAM_KEY = 'germano_circ_exam_grade';
+  const TOTAL_CARDS = FLASHCARDS.length;
+
+  let userRatings = {}; // { [id]: 'facil' | 'medio' | 'dificil' }
+  try {
+    userRatings = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  } catch(e) { userRatings = {}; }
+
+  function getCardDiff(id) {
+    return userRatings[id] || DEFAULT_DIFF[id] || 'medio';
+  }
+
+  function saveRatings() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userRatings));
+    } catch(e) {}
+    updateHeaderStats();
+    renderFilters();
+  }
+
+  // Estado da navegação
+  let currentFilter = 'all'; // 'all', 'sangue', 'coracao', 'externa', 'valvas', 'diff-facil', 'diff-medio', 'diff-dificil'
+  let currentDeck = [...FLASHCARDS];
+  let currentIdx = 0;
+
+  // Tabs
+  const tabs = {
+    cards: document.getElementById('tab-cards'),
+    notes: document.getElementById('tab-notes'),
+    exam:  document.getElementById('tab-exam')
+  };
+  const views = {
+    cards: document.getElementById('view-cards'),
+    notes: document.getElementById('view-notes'),
+    exam:  document.getElementById('view-exam')
+  };
+
+  function setTab(name) {
+    Object.keys(tabs).forEach(k => {
+      const active = k === name;
+      tabs[k].setAttribute('aria-selected', String(active));
+      views[k].classList.toggle('active', active);
+    });
+    if (name === 'notes') renderNotes();
+    if (name === 'exam') renderExam();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabs.cards.addEventListener('click', () => setTab('cards'));
+  tabs.notes.addEventListener('click', () => setTab('notes'));
+  tabs.exam.addEventListener('click', () => setTab('exam'));
+
+  // Filtros
+  const CAT_LABELS = [
+    { key: 'all', label: `Todos os ${TOTAL_CARDS}`, count: TOTAL_CARDS },
+    { key: 'sangue', label: '1. Sangue & Linfa', count: FLASHCARDS.filter(c => c.cat === 'sangue').length },
+    { key: 'coracao', label: '2. Posição & Paredes', count: FLASHCARDS.filter(c => c.cat === 'coracao').length },
+    { key: 'externa', label: '3. Câmaras & Sulcos', count: FLASHCARDS.filter(c => c.cat === 'externa').length },
+    { key: 'valvas', label: '4. Valvas & Ciclo', count: FLASHCARDS.filter(c => c.cat === 'valvas').length },
+    { key: 'diff-facil', label: '🟢 Fácil', count: 0, isDiff: true },
+    { key: 'diff-medio', label: '🟡 Médio', count: 0, isDiff: true },
+    { key: 'diff-dificil', label: '🔴 Difícil', count: 0, isDiff: true }
+  ];
+
+  function getDiffCounts() {
+    let f = 0, m = 0, d = 0;
+    FLASHCARDS.forEach(c => {
+      const diff = getCardDiff(c.id);
+      if (diff === 'facil') f++;
+      else if (diff === 'dificil') d++;
+      else m++;
+    });
+    return { facil: f, medio: m, dificil: d };
+  }
+
+  function renderFilters() {
+    const diffCounts = getDiffCounts();
+    const cont = document.getElementById('filters');
+    cont.innerHTML = '';
+
+    CAT_LABELS.forEach(item => {
+      let count = item.count;
+      if (item.key === 'diff-facil') count = diffCounts.facil;
+      if (item.key === 'diff-medio') count = diffCounts.medio;
+      if (item.key === 'diff-dificil') count = diffCounts.dificil;
+
+      const btn = document.createElement('button');
+      btn.className = 'filter' + (item.isDiff ? ' filter-diff' : '');
+      btn.setAttribute('aria-pressed', String(currentFilter === item.key));
+      btn.innerHTML = `<span class="n">${item.label}</span> <span class="c">${count}</span>`;
+      btn.addEventListener('click', () => applyFilter(item.key));
+      cont.appendChild(btn);
+    });
+  }
+
+  function applyFilter(key) {
+    currentFilter = key;
+    if (key === 'all') {
+      currentDeck = [...FLASHCARDS];
+    } else if (key.startsWith('diff-')) {
+      const diffTarget = key.replace('diff-', '');
+      currentDeck = FLASHCARDS.filter(c => getCardDiff(c.id) === diffTarget);
+    } else {
+      currentDeck = FLASHCARDS.filter(c => c.cat === key);
+    }
+    currentIdx = 0;
+    renderFilters();
+    renderCard();
+  }
+
+  // Shuffle
+  document.getElementById('btn-shuffle').addEventListener('click', () => {
+    for (let i = currentDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [currentDeck[i], currentDeck[j]] = [currentDeck[j], currentDeck[i]];
+    }
+    currentIdx = 0;
+    renderCard();
+  });
+
+  // Render Card
+  const flipper = document.getElementById('flipper');
+  const frontTopic = document.getElementById('front-topic');
+  const backTopic = document.getElementById('back-topic');
+  const frontCount = document.getElementById('front-count');
+  const backCount = document.getElementById('back-count');
+  const frontQ = document.getElementById('front-q');
+  const backA = document.getElementById('back-a');
+  const backTip = document.getElementById('back-tip');
+  const frontStatus = document.getElementById('front-status');
+
+  const btnEasy = document.getElementById('btn-rate-easy');
+  const btnMid  = document.getElementById('btn-rate-mid');
+  const btnHard = document.getElementById('btn-rate-hard');
+
+  function renderCard() {
+    flipper.classList.remove('is-flipped');
+    if (!currentDeck.length) {
+      frontTopic.textContent = 'Filtro vazio';
+      backTopic.textContent = 'Filtro vazio';
+      frontCount.textContent = '0 de 0';
+      backCount.textContent = '0 de 0';
+      frontQ.innerHTML = `Nenhum cartão com essa classificação no momento.<br><small style="font-size:0.95rem; color:var(--ink-muted);">Selecione "Todos os ${TOTAL_CARDS}" para ver o baralho completo.</small>`;
+      backA.textContent = '';
+      backTip.textContent = '';
+      frontStatus.className = 'pill pill-none';
+      frontStatus.textContent = '—';
+      [btnEasy, btnMid, btnHard].forEach(b => b.classList.remove('active'));
+      return;
+    }
+
+    if (currentIdx >= currentDeck.length) currentIdx = 0;
+    if (currentIdx < 0) currentIdx = currentDeck.length - 1;
+
+    const card = currentDeck[currentIdx];
+    const diff = getCardDiff(card.id);
+
+    frontTopic.innerHTML = `<span class="n">#${card.id}</span> ${card.topic}`;
+    backTopic.innerHTML = `<span class="n">#${card.id}</span> ${card.topic}`;
+    frontCount.textContent = `${currentIdx + 1} de ${currentDeck.length}`;
+    backCount.textContent = `${currentIdx + 1} de ${currentDeck.length}`;
+    frontQ.innerHTML = card.q;
+    backA.innerHTML = card.a;
+    backTip.innerHTML = card.tip || '';
+
+    // Status pill
+    frontStatus.className = `pill pill-${diff}`;
+    const diffLabels = { facil: '🟢 Fácil', medio: '🟡 Médio', dificil: '🔴 Difícil' };
+    frontStatus.textContent = diffLabels[diff] || '🟡 Médio';
+
+    // Buttons active state
+    btnEasy.classList.toggle('active', diff === 'facil');
+    btnMid.classList.toggle('active', diff === 'medio');
+    btnHard.classList.toggle('active', diff === 'dificil');
+  }
+
+  // Rating action
+  function rateCurrent(diff) {
+    if (!currentDeck.length) return;
+    const card = currentDeck[currentIdx];
+    userRatings[card.id] = diff;
+    saveRatings();
+
+    // Feedback visual imediato e passa suavemente para o próximo
+    renderCard();
+    setTimeout(() => {
+      nextCard();
+    }, 220);
+  }
+
+  btnEasy.addEventListener('click', (e) => { e.stopPropagation(); rateCurrent('facil'); });
+  btnMid.addEventListener('click',  (e) => { e.stopPropagation(); rateCurrent('medio'); });
+  btnHard.addEventListener('click', (e) => { e.stopPropagation(); rateCurrent('dificil'); });
+
+  function flipCard() {
+    if (!currentDeck.length) return;
+    flipper.classList.toggle('is-flipped');
+  }
+
+  function nextCard() {
+    if (!currentDeck.length) return;
+    currentIdx = (currentIdx + 1) % currentDeck.length;
+    renderCard();
+  }
+
+  function prevCard() {
+    if (!currentDeck.length) return;
+    currentIdx = (currentIdx - 1 + currentDeck.length) % currentDeck.length;
+    renderCard();
+  }
+
+  document.getElementById('scene').addEventListener('click', flipCard);
+  document.getElementById('btn-prev').addEventListener('click', prevCard);
+  document.getElementById('btn-next').addEventListener('click', nextCard);
+
+  // Teclado
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (!views.cards.classList.contains('active')) return;
+
+    if (e.code === 'Space') {
+      e.preventDefault();
+      flipCard();
+    } else if (e.code === 'ArrowRight') {
+      nextCard();
+    } else if (e.code === 'ArrowLeft') {
+      prevCard();
+    } else if (e.key === '1') {
+      rateCurrent('facil');
+    } else if (e.key === '2') {
+      rateCurrent('medio');
+    } else if (e.key === '3') {
+      rateCurrent('dificil');
+    }
+  });
+
+  // Gestos touch no mobile
+  let touchStartX = 0;
+  let touchStartY = 0;
+  const sceneEl = document.getElementById('scene');
+  sceneEl.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  sceneEl.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length === 1) {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) nextCard();
+        else prevCard();
+      }
+    }
+  }, { passive: true });
+
+  // Estatísticas no Header
+  function updateHeaderStats() {
+    const diffs = getDiffCounts();
+    document.getElementById('fig-mastered').innerHTML = `${diffs.facil}<small>/${TOTAL_CARDS}</small>`;
+    document.getElementById('fig-review').textContent = diffs.dificil;
+    const pct = Math.round((diffs.facil / TOTAL_CARDS) * 100);
+    document.getElementById('progress-pct').textContent = `${pct}%`;
+    document.getElementById('progress-bar').style.width = `${pct}%`;
+
+    let savedGrade = null;
+    try { savedGrade = localStorage.getItem(EXAM_KEY); } catch(e) {}
+    document.getElementById('fig-grade').textContent = savedGrade ? `${savedGrade}` : '—';
+  }
+
+  // Resumo
+  let noteFilter = 'all';
+  function renderNotes() {
+    const query = (document.getElementById('search').value || '').toLowerCase().trim();
+    const cont = document.getElementById('notes');
+
+    const filtered = FLASHCARDS.filter(c => {
+      const matchCat = (noteFilter === 'all') || (c.cat === noteFilter);
+      if (!matchCat) return false;
+      if (!query) return true;
+      return c.q.toLowerCase().includes(query) ||
+             c.a.toLowerCase().includes(query) ||
+             c.topic.toLowerCase().includes(query);
+    });
+
+    if (!filtered.length) {
+      cont.innerHTML = '<div class="empty">Nenhum conceito encontrado para essa busca.</div>';
+      return;
+    }
+
+    function hl(txt) {
+      if (!query) return txt;
+      const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return txt.replace(re, '<mark>$1</mark>');
+    }
+
+    cont.innerHTML = filtered.map(c => {
+      const diff = getCardDiff(c.id);
+      const diffBadge = { facil: '🟢 Fácil', medio: '🟡 Médio', dificil: '🔴 Difícil' }[diff];
+      return `
+        <article class="note">
+          <div class="note-head">
+            <span class="eyebrow">${hl(c.topic)}</span>
+            <span class="note-id">#${c.id} · ${diffBadge}</span>
+          </div>
+          <h3>${hl(c.q)}</h3>
+          <div class="answer">${hl(c.a)}</div>
+          ${c.tip ? `<div class="tip">${hl(c.tip)}</div>` : ''}
+        </article>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('search').addEventListener('input', renderNotes);
+
+  // Filtro de categorias no Resumo
+  const noteFilterCont = document.getElementById('note-filters');
+  [
+    { key: 'all', label: 'Todos' },
+    { key: 'sangue', label: '1. Sangue & Linfa' },
+    { key: 'coracao', label: '2. Posição & Paredes' },
+    { key: 'externa', label: '3. Câmaras & Sulcos' },
+    { key: 'valvas', label: '4. Valvas & Ciclo' }
+  ].forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'filter';
+    btn.setAttribute('aria-pressed', String(noteFilter === item.key));
+    btn.textContent = item.label;
+    btn.addEventListener('click', () => {
+      noteFilter = item.key;
+      document.querySelectorAll('#note-filters .filter').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      renderNotes();
+    });
+    noteFilterCont.appendChild(btn);
+  });
+
+  // Simulado
+  let userAnswers = {}; // { [qIdx]: oIdx }
+  let showingOnlyWrong = false;
+
+  function renderExam() {
+    const cont = document.getElementById('questions');
+    cont.innerHTML = SIMULADO_QUESTIONS.map((item, qIdx) => {
+      const isAnswered = userAnswers[qIdx] !== undefined;
+      const userChoice = userAnswers[qIdx];
+      const isRight = isAnswered && (userChoice === item.ans);
+      const isWrong = isAnswered && (!isRight);
+
+      if (showingOnlyWrong && isRight) return '';
+
+      let statusCls = '';
+      if (isRight) statusCls = ' is-right';
+      else if (isWrong) statusCls = ' is-wrong';
+
+      return `
+        <div class="q${statusCls}" id="q-${qIdx}">
+          <div class="q-num">${String(qIdx + 1).padStart(2, '0')}</div>
+          <div>
+            <span class="eyebrow q-cat">${item.cat}</span>
+            <div class="q-title">${item.q}</div>
+          </div>
+          <div class="opts">
+            ${item.opts.map((opt, oIdx) => {
+              let optCls = '';
+              if (isAnswered) {
+                if (oIdx === item.ans) optCls = ' correct';
+                else if (oIdx === userChoice) optCls = ' wrong';
+                else optCls = ' dim';
+              }
+              return `
+                <button class="opt${optCls}" data-q="${qIdx}" data-o="${oIdx}">
+                  <span class="opt-letter">${String.fromCharCode(65 + oIdx)}</span>
+                  <span>${opt}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+          <div class="exp${isAnswered ? ' show' : ''}" id="exp-${qIdx}">
+            <b>Explicação:</b> ${item.exp}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Reattach listeners
+    cont.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const q = parseInt(btn.dataset.q, 10);
+        const o = parseInt(btn.dataset.o, 10);
+        userAnswers[q] = o;
+        renderExam();
+        updateExamAnsweredCount();
+      });
+    });
+
+    updateExamAnsweredCount();
+  }
+
+  function updateExamAnsweredCount() {
+    const total = SIMULADO_QUESTIONS.length;
+    const answered = Object.keys(userAnswers).length;
+    document.getElementById('answered').textContent = `${answered} de ${total} respondidas`;
+  }
+
+  function gradeExam() {
+    let right = 0;
+    const catStats = {};
+
+    SIMULADO_QUESTIONS.forEach((item, qIdx) => {
+      if (!catStats[item.cat]) catStats[item.cat] = { ok: 0, total: 0 };
+      catStats[item.cat].total++;
+
+      if (userAnswers[qIdx] === item.ans) {
+        right++;
+        catStats[item.cat].ok++;
+      }
+    });
+
+    const grade = ((right / SIMULADO_QUESTIONS.length) * 10).toFixed(1);
+    try { localStorage.setItem(EXAM_KEY, grade); } catch(e) {}
+    updateHeaderStats();
+
+    const scoreBox = document.getElementById('score');
+    document.getElementById('score-num').innerHTML = `${grade}<small>/10</small>`;
+
+    let msg = '';
+    const ratio = right / SIMULADO_QUESTIONS.length;
+    if (ratio >= 0.88) msg = 'Excelente resultado, Ana! Você dominou o conteúdo. 💜';
+    else if (ratio >= 0.64) msg = 'Muito bom! Quase lá no 10. Dê uma olhada nos erros abaixo. ✨';
+    else msg = 'Bom treino! O segredo é revisar as explicações e tentar de novo com calma. 🌸';
+
+    document.getElementById('score-msg').textContent = msg;
+    document.getElementById('score-detail').textContent =
+      `Você acertou ${right} de ${SIMULADO_QUESTIONS.length} questões (${Math.round((right/SIMULADO_QUESTIONS.length)*100)}% de aproveitamento).`;
+
+    const bCont = document.getElementById('breakdown');
+    bCont.innerHTML = Object.keys(catStats).map(c => {
+      const s = catStats[c];
+      return `<span>${c}: <strong>${s.ok}/${s.total}</strong></span>`;
+    }).join('');
+
+    scoreBox.classList.add('show');
+    showingOnlyWrong = false;
+    document.getElementById('btn-wrong').style.display = (right < SIMULADO_QUESTIONS.length) ? 'block' : 'none';
+    document.getElementById('btn-all').style.display = 'none';
+
+    renderExam();
+    scoreBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  document.getElementById('btn-grade-top').addEventListener('click', gradeExam);
+  document.getElementById('btn-grade-bottom').addEventListener('click', gradeExam);
+
+  document.getElementById('btn-wrong').addEventListener('click', () => {
+    showingOnlyWrong = true;
+    renderExam();
+    document.getElementById('btn-wrong').style.display = 'none';
+    document.getElementById('btn-all').style.display = 'block';
+  });
+
+  document.getElementById('btn-all').addEventListener('click', () => {
+    showingOnlyWrong = false;
+    renderExam();
+    document.getElementById('btn-wrong').style.display = 'block';
+    document.getElementById('btn-all').style.display = 'none';
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    userAnswers = {};
+    showingOnlyWrong = false;
+    document.getElementById('score').classList.remove('show');
+    renderExam();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Inicialização
+  updateHeaderStats();
+  renderFilters();
+  renderCard();
+})();
+</script>
+</body>
+</html>
